@@ -12,8 +12,8 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Resources', href: '/resources' },
   { label: 'Services', href: '/services' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -101,13 +101,14 @@ export function Header() {
 
   return (
     <>
-      <header
-        ref={headerRef}
-        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
-          scrolled ? 'bg-black/92 backdrop-blur-sm' : 'bg-[#0b0b0b]'
-        }`}
-        role="banner"
-      >
+<header
+  ref={headerRef}
+  className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
+    scrolled ? 'bg-black/92 backdrop-blur-sm' : 'bg-[#0b0b0b] backdrop-blur'
+  }`}
+  role="banner"
+>
+
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           {/* Logo and Brand */}
           <div className="flex items-center flex-shrink-0">
