@@ -3,8 +3,10 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { useI18n } from '../i18n/I18nProvider';
 
 export default function Contact() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,14 +28,14 @@ export default function Contact() {
     setErrorMessage('');
 
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage('Please fill in all required fields');
+      setErrorMessage(t('contactFormErrorRequired'));
       setStatus('error');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setErrorMessage('Please enter a valid email address');
+      setErrorMessage(t('contactFormErrorEmail'));
       setStatus('error');
       return;
     }
@@ -49,7 +51,7 @@ export default function Contact() {
       setFormData({ name: '', email: '', phone: '', message: '', serviceType: 'general' });
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
-      setErrorMessage('Failed to send message. Please try again.');
+      setErrorMessage(t('contactFormErrorSubmit'));
       setStatus('error');
     }
   };
@@ -58,10 +60,9 @@ export default function Contact() {
     <>
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="max-w-3xl">
-          <h1 className="text-5xl font-bold text-slate-900 mb-6">Get In Touch</h1>
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">{t('contactPageTitle')}</h1>
           <p className="text-xl text-slate-700">
-            Have a project in mind? We'd love to hear from you. Let's build something amazing
-            together.
+            {t('contactPageDescription')}
           </p>
         </div>
       </Section>
@@ -71,19 +72,19 @@ export default function Contact() {
           {[
             {
               icon: Mail,
-              title: 'Email',
+              title: t('contactEmailLabel'),
               detail: 'hello@spirolink.com',
               link: 'mailto:hello@spirolink.com',
             },
             {
               icon: Phone,
-              title: 'Phone',
+              title: t('contactPhoneLabel'),
               detail: '(555) 123-4567',
               link: 'tel:+15551234567',
             },
             {
               icon: MapPin,
-              title: 'Office',
+              title: t('contactOfficeLabel'),
               detail: 'Namakkal, Tamil Nadu',
               link: '#',
             },
@@ -105,13 +106,13 @@ export default function Contact() {
       </Section>
 
       <Section className="bg-slate-50">
-        <SectionHeading title="Send us a Message" centered={true} />
+        <SectionHeading title={t('contactFormTitle')} centered={true} />
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
-                  Name *
+                  {t('contactFormNameLabel')} *
                 </label>
                 <input
                   type="text"
@@ -120,13 +121,13 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
-                  placeholder="Your name"
+                  placeholder={t('contactFormNamePlaceholder')}
                   required
                 />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
-                  Email *
+                  {t('contactFormEmailLabel')} *
                 </label>
                 <input
                   type="email"
@@ -135,7 +136,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
-                  placeholder="your@email.com"
+                  placeholder={t('contactFormEmailPlaceholder')}
                   required
                 />
               </div>
@@ -143,7 +144,7 @@ export default function Contact() {
 
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-slate-900 mb-2">
-                Phone
+                {t('contactFormPhoneLabel')}
               </label>
               <input
                 type="tel"
@@ -152,13 +153,13 @@ export default function Contact() {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
-                placeholder="(555) 123-4567"
+                placeholder={t('contactFormPhonePlaceholder')}
               />
             </div>
 
             <div>
               <label htmlFor="serviceType" className="block text-sm font-medium text-slate-900 mb-2">
-                Service Type *
+                {t('contactFormServiceLabel')} *
               </label>
               <select
                 id="serviceType"
@@ -167,19 +168,19 @@ export default function Contact() {
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
               >
-                <option value="general">General Inquiry</option>
-                <option value="pon-ftth">PON & FTTH Network Planning</option>
-                <option value="microwave">Microwave Network Design</option>
-                <option value="optical">Long-Haul Optical Networks</option>
-                <option value="wifi">Enterprise Wi-Fi Network Planning</option>
-                <option value="consultation">Technical Consultation</option>
-                <option value="quote">Request a Quote</option>
+                <option value="general">{t('contactFormServiceGeneral')}</option>
+                <option value="pon-ftth">{t('contactFormServicePonFtth')}</option>
+                <option value="microwave">{t('contactFormServiceMicrowave')}</option>
+                <option value="optical">{t('contactFormServiceOptical')}</option>
+                <option value="wifi">{t('contactFormServiceWifi')}</option>
+                <option value="consultation">{t('contactFormServiceConsultation')}</option>
+                <option value="quote">{t('contactFormServiceQuote')}</option>
               </select>
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-slate-900 mb-2">
-                Message *
+                {t('contactFormMessageLabel')} *
               </label>
               <textarea
                 id="message"
@@ -188,14 +189,14 @@ export default function Contact() {
                 onChange={handleChange}
                 rows={6}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none resize-none"
-                placeholder="Tell us about your project or requirements..."
+                placeholder={t('contactFormMessagePlaceholder')}
                 required
               ></textarea>
             </div>
 
             {status === 'success' && (
               <div className="p-4 bg-green-100 text-green-700 rounded-lg">
-                Thank you! We've received your message and will get back to you soon with a quote or proposal.
+                {t('contactFormSuccessMessage')}
               </div>
             )}
 
@@ -209,18 +210,17 @@ export default function Contact() {
               className="w-full"
               size="lg"
             >
-              {status === 'loading' ? 'Sending...' : 'Send Message'}
+              {status === 'loading' ? t('contactFormSending') : t('contactFormSubmitBtn')}
             </Button>
           </form>
         </div>
       </Section>
 
       <Section className="bg-white">
-        <SectionHeading title="Response Time" centered={true} />
+        <SectionHeading title={t('contactResponseTimeTitle')} centered={true} />
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-slate-600 mb-4">
-            We typically respond to inquiries within 24 hours during business hours. For urgent
-            matters, please call us directly.
+            {t('contactResponseTimeMessage')}
           </p>
         </div>
       </Section>

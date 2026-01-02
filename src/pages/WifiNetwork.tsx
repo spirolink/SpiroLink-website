@@ -3,8 +3,10 @@ import { ArrowRight, Wifi, Shield, Zap, TrendingUp } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { useI18n } from '../i18n/I18nProvider';
 
 export default function WifiNetwork() {
+  const { t } = useI18n();
   return (
     <>
       {/* START: Enterprise Wi-Fi Network Planning Page */}

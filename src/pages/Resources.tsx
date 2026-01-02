@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Download, X } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
+import { useI18n } from '../i18n/I18nProvider';
 
 interface DownloadItem {
   id: string;
@@ -49,6 +50,7 @@ const downloadItems: DownloadItem[] = [
 ];
 
 export default function Resources() {
+  const { t } = useI18n();
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState('');
   const [selectedFile, setSelectedFile] = useState<DownloadItem | null>(null);
@@ -118,17 +120,17 @@ export default function Resources() {
       {/* START: PON & FTTH MODULE - RESOURCES PAGE */}
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">Download Resources</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">{t('resourcesPageTitle')}</h1>
           <p className="text-xl text-slate-700">
-            Access detailed technical documents, planning tools, and templates to support your FTTH and PON network projects.
+            {t('resourcesPageDescription')}
           </p>
         </div>
       </Section>
 
       <Section className="bg-white">
         <SectionHeading 
-          title="Download Resources & Tools" 
-          subtitle="Free Technical Resources"
+          title={t('resourcesDownloadTitle')} 
+          subtitle={t('resourcesDownloadSubtitle')}
           centered={true}
         />
         <div className="max-w-4xl mx-auto mt-12">
@@ -150,7 +152,7 @@ export default function Resources() {
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  Download
+                  {t('resourcesDownloadBtn')}
                 </button>
               </div>
             ))}
@@ -164,7 +166,7 @@ export default function Resources() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Download Resource</h2>
+              <h2 className="text-2xl font-bold text-slate-900">{t('resourcesModalTitle')}</h2>
               <button
                 onClick={handleCloseModal}
                 className="text-slate-400 hover:text-slate-600 transition-colors"
@@ -174,8 +176,7 @@ export default function Resources() {
             </div>
 
             <p className="text-slate-600 mb-6">
-              Enter your email to download{' '}
-              <span className="font-semibold">{selectedFile?.title}</span>
+              {t('resourcesModalDescription')} <span className="font-semibold">{selectedFile?.title}</span>
             </p>
 
             <div className="mb-4">
@@ -183,12 +184,12 @@ export default function Resources() {
                 htmlFor="email"
                 className="block text-sm font-semibold text-slate-700 mb-2"
               >
-                Email Address
+                {t('resourcesEmailLabel')}
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t('resourcesEmailPlaceholder')}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -207,18 +208,18 @@ export default function Resources() {
                 onClick={handleConfirmDownload}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-colors"
               >
-                Download
+                {t('resourcesDownloadBtnModal')}
               </button>
               <button
                 onClick={handleCloseModal}
                 className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-2 rounded-lg transition-colors"
               >
-                Cancel
+                {t('resourcesCancelBtn')}
               </button>
             </div>
 
             <p className="text-slate-500 text-xs mt-4 text-center">
-              We respect your privacy. Your email will only be used for download tracking.
+              {t('resourcesPrivacyNotice')}
             </p>
           </div>
         </div>

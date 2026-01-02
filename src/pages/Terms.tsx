@@ -1,6 +1,8 @@
 import { Section } from '../components/ui/Section';
+import { useI18n } from '../i18n/I18nProvider';
 
 export default function Terms() {
+  const { t } = useI18n();
   return (
     <>
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-20">
