@@ -1,8 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import { I18nProvider } from './i18n/I18nProvider';
->>>>>>> origin/sampritha-branch
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Home from './pages/Home';
@@ -18,30 +15,6 @@ import Terms from './pages/Terms';
 
 export default function App() {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/pon-ftth" element={<PonFtth />} />
-            <Route path="/microwave-network" element={<MicrowaveNetwork />} />
-            <Route path="/optical-long-haul" element={<OpticalLongHaul />} />
-            <Route path="/wifi-network" element={<WifiNetwork />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
-  );
-}
-=======
     <I18nProvider>
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
@@ -66,4 +39,3 @@ export default function App() {
     </I18nProvider>
   );
 }
->>>>>>> origin/sampritha-branch
