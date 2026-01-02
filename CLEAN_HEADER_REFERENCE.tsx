@@ -1,3 +1,12 @@
+// ============================================================================
+// CLEANED HEADER.TSX - MERGE CONFLICT FREE VERSION
+// ============================================================================
+// This is the correct, production-ready version with:
+// ✅ NO duplicated selectors
+// ✅ Proper I18n integration
+// ✅ Clean component structure
+// ============================================================================
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
@@ -204,15 +213,15 @@ export function Header() {
           {/* Spacer - Pushes right actions to the right */}
           <div className="flex-1"></div>
 
-          {/* Right side actions */}
+          {/* Right side actions - NO DUPLICATES */}
           <div className="flex items-center gap-4">
-            {/* Language Selector */}
+            {/* Language Selector - APPEARS ONLY ONCE */}
             <LanguageSelector />
 
-            {/* Country Selector */}
+            {/* Country Selector - APPEARS ONLY ONCE */}
             <CountrySelector />
 
-            {/* Sign In */}
+            {/* Sign In Button */}
             <button
               className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
               aria-label={t('signIn')}

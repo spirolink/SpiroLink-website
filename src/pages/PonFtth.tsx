@@ -1,14 +1,9 @@
 import { Section, SectionHeading } from '../components/ui/Section';
-<<<<<<< HEAD
-
-export default function PonFtth() {
-=======
 import { useI18n } from '../i18n/I18nProvider';
 
 export default function PonFtth() {
   const { t } = useI18n();
   
->>>>>>> origin/sampritha-branch
   return (
     <>
       {/* START: PON & FTTH MODULE - FULL PAGE */}
@@ -16,18 +11,10 @@ export default function PonFtth() {
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-<<<<<<< HEAD
-            PON & FTTH Network Planning Services
-          </h1>
-          <p className="text-xl text-slate-700 mb-8 max-w-3xl mx-auto">
-            Comprehensive engineering services for designing, scaling,
-            and upgrading fiber access networks.
-=======
             {t('ponFtthHeroTitle')}
           </h1>
           <p className="text-xl text-slate-700 mb-8 max-w-3xl mx-auto">
             {t('ponFtthHeroDescription')}
->>>>>>> origin/sampritha-branch
           </p>
         </div>
       </Section>
@@ -35,22 +22,13 @@ export default function PonFtth() {
       {/* FTTH Network Planning */}
       <Section className="bg-white">
         <SectionHeading 
-<<<<<<< HEAD
-          title="FTTH Network Planning" 
-          subtitle="Foundation for Success"
-=======
           title={t('ponFtthNetworkPlanningTitle')} 
           subtitle={t('ponFtthNetworkPlanningSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={false}
         />
         <div className="max-w-3xl mx-auto">
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
-            Service area analysis, topology selection, CO & hub planning
-=======
             {t('ponFtthNetworkPlanningDesc')}
->>>>>>> origin/sampritha-branch
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
@@ -76,22 +54,13 @@ export default function PonFtth() {
       {/* PON Technology Design */}
       <Section className="bg-slate-50">
         <SectionHeading 
-<<<<<<< HEAD
-          title="PON Technology Design" 
-          subtitle="Architecture Selection"
-=======
           title={t('ponFtthTechnologyDesignTitle')} 
           subtitle={t('ponFtthTechnologyDesignSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={false}
         />
         <div className="max-w-3xl mx-auto">
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
-            GPON, XG-PON, XGS-PON, NG-PON2, EPON
-=======
             {t('ponFtthTechnologyDesignDesc')}
->>>>>>> origin/sampritha-branch
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
@@ -117,22 +86,13 @@ export default function PonFtth() {
       {/* ODN Engineering */}
       <Section className="bg-white">
         <SectionHeading 
-<<<<<<< HEAD
-          title="ODN Engineering" 
-          subtitle="Optical Distribution Network"
-=======
           title={t('ponFtthOdnEngineeringTitle')} 
           subtitle={t('ponFtthOdnEngineeringSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={false}
         />
         <div className="max-w-3xl mx-auto">
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
-            Split ratios, fiber routing, FDH, NAP, splice planning
-=======
             {t('ponFtthOdnEngineeringDesc')}
->>>>>>> origin/sampritha-branch
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
@@ -158,22 +118,13 @@ export default function PonFtth() {
       {/* Capacity & Coverage */}
       <Section className="bg-slate-50">
         <SectionHeading 
-<<<<<<< HEAD
-          title="Capacity & Coverage Planning" 
-          subtitle="Sizing for Growth"
-=======
           title={t('ponFtthCapacityTitle')} 
           subtitle={t('ponFtthCapacitySubtitle')}
->>>>>>> origin/sampritha-branch
           centered={false}
         />
         <div className="max-w-3xl mx-auto">
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
-            Port sizing, take-rate modeling, bandwidth forecasting
-=======
             {t('ponFtthCapacityDesc')}
->>>>>>> origin/sampritha-branch
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
@@ -199,22 +150,13 @@ export default function PonFtth() {
       {/* Network Migration */}
       <Section className="bg-white">
         <SectionHeading 
-<<<<<<< HEAD
-          title="Network Migration" 
-          subtitle="Technology Transitions"
-=======
           title={t('ponFtthMigrationTitle')} 
           subtitle={t('ponFtthMigrationSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={false}
         />
         <div className="max-w-3xl mx-auto">
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
-            Copper/HFC to FTTH, GPON to XGS-PON upgrades
-=======
             {t('ponFtthMigrationDesc')}
->>>>>>> origin/sampritha-branch
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
@@ -240,42 +182,14 @@ export default function PonFtth() {
       {/* Design Approach */}
       <Section className="bg-slate-50">
         <SectionHeading 
-<<<<<<< HEAD
-          title="Our Design Approach" 
-          subtitle="Six-Step Methodology"
-=======
           title={t('ponFtthDesignApproachTitle')} 
           subtitle={t('ponFtthDesignApproachSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-12">
           <ol className="space-y-3 text-slate-700">
             <li className="flex gap-3">
               <span className="font-semibold text-green-600 flex-shrink-0">1</span>
-<<<<<<< HEAD
-              <span>Demand & serving area analysis</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-semibold text-green-600 flex-shrink-0">2</span>
-              <span>PON architecture & split strategy definition</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-semibold text-green-600 flex-shrink-0">3</span>
-              <span>ODN & fiber route engineering</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-semibold text-green-600 flex-shrink-0">4</span>
-              <span>Optical loss budget & performance modeling</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-semibold text-green-600 flex-shrink-0">5</span>
-              <span>Scalability & migration planning</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="font-semibold text-green-600 flex-shrink-0">6</span>
-              <span>Construction-ready documentation</span>
-=======
               <span>{t('ponFtthDemandAnalysisStep')}</span>
             </li>
             <li className="flex gap-3">
@@ -297,7 +211,6 @@ export default function PonFtth() {
             <li className="flex gap-3">
               <span className="font-semibold text-green-600 flex-shrink-0">6</span>
               <span>{t('ponFtthConstructionStep')}</span>
->>>>>>> origin/sampritha-branch
             </li>
           </ol>
         </div>
@@ -306,13 +219,8 @@ export default function PonFtth() {
       {/* PON Technologies */}
       <Section className="bg-white">
         <SectionHeading 
-<<<<<<< HEAD
-          title="PON Technologies" 
-          subtitle="Next-Generation Solutions"
-=======
           title={t('ponFtthPonTechnologiesTitle')} 
           subtitle={t('ponFtthPonTechnologiesSubtitle')}
->>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
@@ -338,21 +246,6 @@ export default function PonFtth() {
       {/* Network Capabilities */}
       <Section className="bg-slate-50">
         <div className="max-w-4xl mx-auto">
-<<<<<<< HEAD
-          <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">Network Capabilities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Split Ratios</h3>
-              <p className="text-slate-600">1:16 to 1:128 configurations optimized for your service area density</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Reach</h3>
-              <p className="text-slate-600">20–60 km network reach supporting both short and long-distance deployments</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Deployment Types</h3>
-              <p className="text-slate-600">Aerial, underground, and submarine routes with optimized cost-benefit analysis</p>
-=======
           <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">{t('ponFtthNetworkCapabilitiesTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg">
@@ -366,7 +259,6 @@ export default function PonFtth() {
             <div className="bg-white p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-slate-900 mb-3">{t('ponFtthDeploymentTypesTitle')}</h3>
               <p className="text-slate-600">{t('ponFtthDeploymentTypesDesc')}</p>
->>>>>>> origin/sampritha-branch
             </div>
           </div>
         </div>
@@ -375,15 +267,6 @@ export default function PonFtth() {
       {/* Industries Served */}
       <Section className="bg-white">
         <div className="max-w-4xl mx-auto">
-<<<<<<< HEAD
-          <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">Industries Served</h2>
-          <p className="text-slate-700 text-lg leading-relaxed text-center mb-8">
-            ISPs, telecom operators, municipalities, utilities, enterprises, real estate developers, and rural broadband initiatives.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Public Sector</h3>
-=======
           <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">{t('ponFtthIndustriesServedTitle')}</h2>
           <p className="text-slate-700 text-lg leading-relaxed text-center mb-8">
             {t('ponFtthIndustriesServedDesc')}
@@ -391,7 +274,6 @@ export default function PonFtth() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-slate-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-slate-900 mb-3">{t('ponFtthPublicSectorTitle')}</h3>
->>>>>>> origin/sampritha-branch
               <ul className="text-slate-600 space-y-2 text-sm">
                 <li>• Municipalities</li>
                 <li>• Public utilities</li>
@@ -399,11 +281,7 @@ export default function PonFtth() {
               </ul>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-<<<<<<< HEAD
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Telecom & ISPs</h3>
-=======
               <h3 className="text-lg font-semibold text-slate-900 mb-3">{t('ponFtthTelecomIsPsTitle')}  </h3>
->>>>>>> origin/sampritha-branch
               <ul className="text-slate-600 space-y-2 text-sm">
                 <li>• Broadband providers</li>
                 <li>• Telecom operators</li>
@@ -411,11 +289,7 @@ export default function PonFtth() {
               </ul>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-<<<<<<< HEAD
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Enterprise</h3>
-=======
               <h3 className="text-lg font-semibold text-slate-900 mb-3">{t('ponFtthEnterpriseTitle')}</h3>
->>>>>>> origin/sampritha-branch
               <ul className="text-slate-600 space-y-2 text-sm">
                 <li>• Data centers</li>
                 <li>• Real estate developers</li>

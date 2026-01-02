@@ -1,0 +1,54 @@
+# Git Merge Attributes Configuration
+# This file helps Git handle merges more intelligently
+# Place this in your .gitattributes file
+
+# ============================================================================
+# MERGE CONFLICT PREVENTION CONFIGURATION
+# ============================================================================
+
+# For React/TypeScript files, prefer "union" merge strategy where possible
+*.tsx merge=union
+*.ts merge=union
+*.jsx merge=union
+*.js merge=union
+
+# CSS files usually don't have conflicts if structured properly
+*.css merge=union
+*.module.css merge=union
+
+# Configuration files - be careful, use default
+*.json merge=default
+*.config.* merge=default
+
+# Markdown files - usually safe to union merge
+*.md merge=union
+
+# ============================================================================
+# BINARY FILES - Mark them as binary to avoid text-based merging
+# ============================================================================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+
+# ============================================================================
+# AUTO-CRLF SETTINGS (Important for cross-platform compatibility)
+# ============================================================================
+* text=auto
+
+*.tsx text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.css text eol=lf
+
+# ============================================================================
+# DIFF SETTINGS (Better change visualization)
+# ============================================================================
+*.tsx diff=typescript
+*.ts diff=typescript
+*.jsx diff=javascript
+*.js diff=javascript
