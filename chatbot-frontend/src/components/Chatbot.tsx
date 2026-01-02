@@ -13,7 +13,7 @@ export const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! 👋 I\'m the SPIROLINK Assistant. How can I help you today?',
+      text: "Hello! 👋 I'm the SPIROLINK Assistant. How can I help you today?",
       sender: 'bot',
       timestamp: new Date(),
     },
@@ -33,7 +33,6 @@ export const Chatbot: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Focus input when chat opens
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
@@ -57,15 +56,13 @@ export const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // ✅ Production-ready fetch using .env
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/chat`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMessage.text }),
-        }
-      );
+      // ✅ Use your Render backend URL from .env
+      const backendURL = import.meta.env.VITE_API_URL || 'https://spirolink-web-backend-1.onrender.com';
+      const response = await fetch(`${backendURL}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage.text }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -87,8 +84,7 @@ export const Chatbot: React.FC = () => {
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : 'Failed to get response';
+      const errorMessage = err instanceof Error ? err.message : 'Failed to get response';
 
       const errorBotMessage: Message = {
         id: (Date.now() + 2).toString(),
@@ -113,7 +109,6 @@ export const Chatbot: React.FC = () => {
 
   return (
     <>
-      {/* Chat Widget Button */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
@@ -124,10 +119,8 @@ export const Chatbot: React.FC = () => {
         </button>
       )}
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 animate-in fade-in slide-in-from-bottom-4">
-          {/* Header */}
           <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div>
               <h2 className="font-bold text-lg">SPIROLINK Assistant</h2>
@@ -142,14 +135,11 @@ export const Chatbot: React.FC = () => {
             </button>
           </div>
 
-          {/* Messages Container */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${
-                  message.sender === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
                   className={`max-w-xs px-4 py-2 rounded-lg whitespace-pre-wrap break-words ${
@@ -175,7 +165,6 @@ export const Chatbot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
           <div className="border-t border-gray-200 p-3 bg-white rounded-b-lg">
             <div className="flex gap-2">
               <input
@@ -193,11 +182,7 @@ export const Chatbot: React.FC = () => {
                 disabled={!input.trim() || isLoading}
                 className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
               >
-                {isLoading ? (
-                  <Loader2 size={18} className="animate-spin" />
-                ) : (
-                  <Send size={18} />
-                )}
+                {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
               </button>
             </div>
           </div>
