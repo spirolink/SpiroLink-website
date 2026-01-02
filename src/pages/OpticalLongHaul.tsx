@@ -2,10 +2,18 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Mail } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
+<<<<<<< HEAD
+=======
+import { useI18n } from '../i18n/I18nProvider';
+>>>>>>> origin/sampritha-branch
 
 // START: Long-Haul Optical Network Planning Page
 
 export default function OpticalLongHaul() {
+<<<<<<< HEAD
+=======
+  const { t } = useI18n();
+>>>>>>> origin/sampritha-branch
   return (
     <>
       {/* Hero Section */}

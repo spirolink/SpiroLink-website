@@ -2,15 +2,29 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
+<<<<<<< HEAD
 
 export default function Services() {
+=======
+import { useI18n } from '../i18n/I18nProvider';
+
+export default function Services() {
+  const { t } = useI18n();
+  
+>>>>>>> origin/sampritha-branch
   return (
     <>
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center max-w-3xl mx-auto">
+<<<<<<< HEAD
           <h1 className="text-5xl font-bold text-slate-900 mb-6">Our Services</h1>
           <p className="text-xl text-slate-700 mb-8">
             Comprehensive solutions for fiber and microwave network planning and digital transformation
+=======
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">{t('servicesPageTitle')}</h1>
+          <p className="text-xl text-slate-700 mb-8">
+            {t('servicesPageDescription')}
+>>>>>>> origin/sampritha-branch
           </p>
         </div>
       </Section>
@@ -18,12 +32,18 @@ export default function Services() {
       {/* START: PON & FTTH MODULE - SERVICES PAGE SUMMARY */}
       <Section className="bg-white">
         <SectionHeading
+<<<<<<< HEAD
           title="PON & FTTH Network Planning Services"
           subtitle="Technical Excellence"
+=======
+          title={t('servicesPoNFtthTitle')}
+          subtitle={t('servicesPoNFtthSubtitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-12">
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
+<<<<<<< HEAD
             We provide comprehensive engineering services for designing, scaling, and upgrading fiber access networks. 
             Our expertise spans FTTH network planning, PON technology design, ODN engineering, capacity planning, and 
             network migration strategies.
@@ -51,6 +71,33 @@ export default function Services() {
               <li className="flex gap-3">
                 <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
                 <span><strong>Network Migration:</strong> Copper/HFC to FTTH, GPON to XGS-PON upgrades</span>
+=======
+            {t('servicesPoNFtthIntro')}
+          </p>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg mb-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">{t('servicesCoreAreas')}</h3>
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesFtthNetworkPlanningTitle')}:</strong> {t('servicesFtthNetworkPlanningDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesPonTechnologyTitle')}:</strong> {t('servicesPonTechnologyDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOdnEngineeringTitle')}:</strong> {t('servicesOdnEngineeringDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('serviceCapacityCoverageTitle')}:</strong> {t('serviceCapacityCoverageDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesNetworkMigrationTitle')}:</strong> {t('servicesNetworkMigrationDesc')}</span>
+>>>>>>> origin/sampritha-branch
               </li>
             </ul>
           </div>
@@ -58,7 +105,11 @@ export default function Services() {
           <div className="text-center">
             <Link to="/pon-ftth">
               <Button size="lg">
+<<<<<<< HEAD
                 View Complete Technical Details <ArrowRight className="w-5 h-5" />
+=======
+                {t('servicesViewCompleteBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
               </Button>
             </Link>
           </div>
@@ -69,12 +120,18 @@ export default function Services() {
       {/* START: Microwave Network Module - SERVICES PAGE */}
       <Section className="bg-white">
         <SectionHeading
+<<<<<<< HEAD
           title="Microwave Network Design Services"
           subtitle="Technical Excellence"
+=======
+          title={t('servicesMicrowaveTitle')}
+          subtitle={t('servicesMicrowaveSubtitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-12">
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
+<<<<<<< HEAD
             Microwave networks are a proven, high-reliability communication solution for environments where fiber is unavailable, delayed, cost-prohibitive, or operationally risky. At SpiroLink, we design carrier-grade microwave networks that deliver high availability, predictable performance, and long-term operational resilience across diverse industries.
           </p>
           
@@ -100,6 +157,33 @@ export default function Services() {
               <li className="flex gap-3">
                 <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
                 <span><strong>Implementation Support:</strong> Detailed technical documentation, equipment selection and vendor evaluation, installation supervision, network commissioning</span>
+=======
+            {t('servicesMicrowaveIntro')}
+          </p>
+          
+          <p className="text-slate-700 text-lg leading-relaxed mb-8">
+            {t('servicesMicrowaveIntro2')}
+          </p>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg mb-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">{t('servicesCoreAreas')}</h3>
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesMicrowavePlanningTitle')}:</strong> {t('servicesMicrowavePlanningDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesMicrowaveLinkTitle')}:</strong> {t('servicesMicrowaveLinkDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesMicrowaveRegulatoryTitle')}:</strong> {t('servicesMicrowaveRegulatoryDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesMicrowaveImplementationTitle')}:</strong> {t('servicesMicrowaveImplementationDesc')}</span>
+>>>>>>> origin/sampritha-branch
               </li>
             </ul>
           </div>
@@ -107,12 +191,20 @@ export default function Services() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
               <Button size="lg">
+<<<<<<< HEAD
                 Get Started <ArrowRight className="w-5 h-5" />
+=======
+                {t('servicesGetStartedBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
               </Button>
             </Link>
             <Link to="/microwave-network">
               <Button size="lg">
+<<<<<<< HEAD
                 View Complete Technical Details <ArrowRight className="w-5 h-5" />
+=======
+                {t('servicesViewCompleteBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
               </Button>
             </Link>
           </div>
@@ -123,12 +215,18 @@ export default function Services() {
       {/* START: Long-Haul Optical Network Module - SERVICES PAGE */}
       <Section className="bg-white">
         <SectionHeading
+<<<<<<< HEAD
           title="Long-Haul Optical Network Planning Services"
           subtitle="Technical Excellence"
+=======
+          title={t('servicesOpticalTitle')}
+          subtitle={t('servicesOpticalSubtitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-12">
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
+<<<<<<< HEAD
             Long-haul optical networks form the backbone of modern digital infrastructure, connecting cities, regions, data centers, and critical services across vast distances. We specialize in planning and designing high-capacity optical fiber networks that deliver terabit-scale capacity, ultra-low latency, and exceptional reliability for carriers, internet service providers, data center operators, and large enterprises.
           </p>
           
@@ -158,6 +256,37 @@ export default function Services() {
               <li className="flex gap-3">
                 <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
                 <span><strong>Migration & Upgrade Planning:</strong> Legacy modernization, capacity augmentation, minimal-disruption strategies</span>
+=======
+            {t('servicesOpticalIntro')}
+          </p>
+          
+          <p className="text-slate-700 text-lg leading-relaxed mb-8">
+            {t('servicesOpticalIntro2')}
+          </p>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg mb-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">{t('servicesCoreAreas')}</h3>
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOpticalRouteTitle')}:</strong> {t('servicesOpticalRouteDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOpticalDwdmTitle')}:</strong> {t('servicesOpticalDwdmDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOpticalLinkBudgetTitle')}:</strong> {t('servicesOpticalLinkBudgetDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOpticalResilienceTitle')}:</strong> {t('servicesOpticalResilienceDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesOpticalMigrationTitle')}:</strong> {t('servicesOpticalMigrationDesc')}</span>
+>>>>>>> origin/sampritha-branch
               </li>
             </ul>
           </div>
@@ -165,7 +294,11 @@ export default function Services() {
           <div className="text-center">
             <Link to="/optical-long-haul">
               <Button size="lg">
+<<<<<<< HEAD
                 View Complete Technical Details <ArrowRight className="w-5 h-5" />
+=======
+                {t('servicesViewCompleteBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
               </Button>
             </Link>
           </div>
@@ -176,12 +309,18 @@ export default function Services() {
       {/* START: Enterprise Wi-Fi Network Module - SERVICES PAGE */}
       <Section className="bg-white">
         <SectionHeading
+<<<<<<< HEAD
           title="Enterprise & Critical Wi-Fi Network Planning Services"
           subtitle="Technical Excellence"
+=======
+          title={t('servicesWifiTitle')}
+          subtitle={t('servicesWifiSubtitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-12">
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
+<<<<<<< HEAD
             Modern Wi-Fi networks are no longer best-effort convenience systems. They are core access infrastructure supporting business-critical applications, real-time operations, IoT, and user experience at scale. We provide professional Wi-Fi network planning and design services that deliver predictable performance, scalability, and operational reliability across enterprise, industrial, public, and mission-critical environments.
           </p>
           
@@ -211,6 +350,37 @@ export default function Services() {
               <li className="flex gap-3">
                 <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
                 <span><strong>Migration & Upgrade Planning:</strong> Legacy system assessment, technology refresh, phased deployment, minimal-disruption strategies</span>
+=======
+            {t('servicesWifiIntro')}
+          </p>
+          
+          <p className="text-slate-700 text-lg leading-relaxed mb-8">
+            {t('servicesWifiIntro2')}
+          </p>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg mb-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">{t('servicesCoreAreas')}</h3>
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesWifiDesignTitle')}:</strong> {t('servicesWifiDesignDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesWifi6Title')}:</strong> {t('servicesWifi6Desc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesWifiSecurityTitle')}:</strong> {t('servicesWifiSecurityDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesWifiPerformanceTitle')}:</strong> {t('servicesWifiPerformanceDesc')}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-semibold text-green-600 flex-shrink-0">✓</span>
+                <span><strong>{t('servicesWifiMigrationTitle')}:</strong> {t('servicesWifiMigrationDesc')}</span>
+>>>>>>> origin/sampritha-branch
               </li>
             </ul>
           </div>
@@ -218,7 +388,11 @@ export default function Services() {
           <div className="text-center">
             <Link to="/wifi-network">
               <Button size="lg">
+<<<<<<< HEAD
                 View Complete Technical Details <ArrowRight className="w-5 h-5" />
+=======
+                {t('servicesViewCompleteBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
               </Button>
             </Link>
           </div>
@@ -228,12 +402,18 @@ export default function Services() {
 
       <Section className="bg-slate-50">
         <SectionHeading
+<<<<<<< HEAD
           title="Why Partner With Us"
           subtitle="What Sets Us Apart"
+=======
+          title={t('servicesWhyPartnerTitle')}
+          subtitle={t('servicesWhyPartnerSubtitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
           <div className="bg-white p-6 rounded-lg">
+<<<<<<< HEAD
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Expert Team</h3>
             <p className="text-slate-600">Experienced engineers and planners with proven track record in fiber and microwave network deployment</p>
           </div>
@@ -244,12 +424,25 @@ export default function Services() {
           <div className="bg-white p-6 rounded-lg">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Full Documentation</h3>
             <p className="text-slate-600">Construction-ready plans, specifications, and cost models for immediate deployment</p>
+=======
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('servicesExpertTeamTitle')}</h3>
+            <p className="text-slate-600">{t('servicesExpertTeamDesc')}</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg">
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('servicesProvenMethodTitle')}</h3>
+            <p className="text-slate-600">{t('servicesProvenMethodDesc')}</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg">
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('servicesDocumentationTitle')}</h3>
+            <p className="text-slate-600">{t('servicesDocumentationDesc')}</p>
+>>>>>>> origin/sampritha-branch
           </div>
         </div>
       </Section>
 
       <Section className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-32">
         <div className="text-center">
+<<<<<<< HEAD
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 text-green-50">
             Let's discuss how we can help with your network planning needs.
@@ -257,6 +450,15 @@ export default function Services() {
           <Link to="/contact">
             <Button className="text-green-600 hover:bg-gray-50 shadow-lg hover:shadow-xl px-8 py-4 text-lg font-semibold">
               Contact Us <ArrowRight className="w-5 h-5" />
+=======
+          <h2 className="text-4xl font-bold mb-6">{t('servicesCtaTitle')}</h2>
+          <p className="text-xl mb-8 text-green-50">
+            {t('servicesCtaDescription')}
+          </p>
+          <Link to="/contact">
+            <Button className="text-green-600 hover:bg-gray-50 shadow-lg hover:shadow-xl px-8 py-4 text-lg font-semibold">
+              {t('contactUsBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
             </Button>
           </Link>
         </div>

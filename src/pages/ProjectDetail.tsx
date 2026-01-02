@@ -3,6 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+<<<<<<< HEAD
+=======
+import { useI18n } from '../i18n/I18nProvider';
+>>>>>>> origin/sampritha-branch
 
 // Mock project data matching the Projects page
 const mockProjects = [

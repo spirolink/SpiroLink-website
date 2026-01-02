@@ -2,14 +2,22 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Mail } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
+<<<<<<< HEAD
 
 export default function MicrowaveNetwork() {
+=======
+import { useI18n } from '../i18n/I18nProvider';
+
+export default function MicrowaveNetwork() {
+  const { t } = useI18n();
+>>>>>>> origin/sampritha-branch
   return (
     <>
       {/* START: Microwave Network Module */}
       
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center max-w-4xl mx-auto">
+<<<<<<< HEAD
           <h1 className="text-5xl font-bold text-slate-900 mb-6">MICROWAVE NETWORK DESIGN SERVICES</h1>
           <p className="text-xl text-slate-700 mb-8 leading-relaxed">
             Microwave networks are a proven, high-reliability communication solution for environments where fiber is unavailable, delayed, cost-prohibitive, or operationally risky. At SpiroLink, we design carrier-grade microwave networks that deliver high availability, predictable performance, and long-term operational resilience across diverse industries.
@@ -19,10 +27,22 @@ export default function MicrowaveNetwork() {
           </p>
           <p className="text-xl text-slate-700 mb-12 leading-relaxed">
             Delivering reliable, high-capacity microwave network solutions across telecommunications, utilities, transportation, and enterprise sectors worldwide. Whether you're a mobile operator expanding your backhaul network, a utility company monitoring power grids, or an enterprise connecting remote facilities, our expertise ensures reliable, high-performance wireless connectivity tailored to your specific needs.
+=======
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">{t('microwaveHeroTitle')}</h1>
+          <p className="text-xl text-slate-700 mb-8 leading-relaxed">
+            {t('microwaveHeroDescription')}
+          </p>
+          <p className="text-xl text-slate-700 mb-8 leading-relaxed">
+            {t('microwaveHeroDescription2')}
+          </p>
+          <p className="text-xl text-slate-700 mb-12 leading-relaxed">
+            {t('microwaveHeroDescription3')}
+>>>>>>> origin/sampritha-branch
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
               <Button size="lg" className="bg-green-600 hover:bg-green-700">
+<<<<<<< HEAD
                 Get Started <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -31,6 +51,16 @@ export default function MicrowaveNetwork() {
               className="px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 active:scale-95 shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
             >
               View Case Studies <ArrowRight className="w-5 h-5" />
+=======
+                {t('microwaveGetStartedBtn')} <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
+            <button
+              onClick={() => alert(t('microwaveCaseStudiesMessage'))}
+              className="px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 active:scale-95 shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
+            >
+              {t('microwaveViewCaseStudiesBtn')} <ArrowRight className="w-5 h-5" />
+>>>>>>> origin/sampritha-branch
             </button>
           </div>
         </div>
@@ -39,12 +69,20 @@ export default function MicrowaveNetwork() {
       {/* OUR CORE SERVICES */}
       <Section className="bg-white">
         <SectionHeading
+<<<<<<< HEAD
           title="OUR CORE SERVICES"
+=======
+          title={t('microwaveCoreServicesTitle')}
+>>>>>>> origin/sampritha-branch
           centered={true}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-5xl mx-auto">
           <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
+<<<<<<< HEAD
             <h3 className="text-2xl font-bold text-slate-900 mb-4">1. Network Planning & Design</h3>
+=======
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('microwaveNetworkPlanningTitle')}</h3>
+>>>>>>> origin/sampritha-branch
             <ul className="space-y-2 text-slate-700">
               <li className="flex gap-2">
                 <span className="text-green-600 font-bold">✓</span>
@@ -70,7 +108,11 @@ export default function MicrowaveNetwork() {
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
+<<<<<<< HEAD
             <h3 className="text-2xl font-bold text-slate-900 mb-4">2. Microwave Link Engineering</h3>
+=======
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('microwaveLinkEngineeringTitle')}</h3>
+>>>>>>> origin/sampritha-branch
             <ul className="space-y-2 text-slate-700">
               <li className="flex gap-2">
                 <span className="text-green-600 font-bold">✓</span>
@@ -96,7 +138,11 @@ export default function MicrowaveNetwork() {
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
+<<<<<<< HEAD
             <h3 className="text-2xl font-bold text-slate-900 mb-4">3. Regulatory & Compliance</h3>
+=======
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('microwaveRegulatoryTitle')}</h3>
+>>>>>>> origin/sampritha-branch
             <ul className="space-y-2 text-slate-700">
               <li className="flex gap-2">
                 <span className="text-green-600 font-bold">✓</span>
@@ -122,7 +168,11 @@ export default function MicrowaveNetwork() {
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
+<<<<<<< HEAD
             <h3 className="text-2xl font-bold text-slate-900 mb-4">4. Implementation Support</h3>
+=======
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('microwaveImplementationTitle')}</h3>
+>>>>>>> origin/sampritha-branch
             <ul className="space-y-2 text-slate-700">
               <li className="flex gap-2">
                 <span className="text-green-600 font-bold">✓</span>

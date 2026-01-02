@@ -3,8 +3,15 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+<<<<<<< HEAD
 
 export default function Contact() {
+=======
+import { useI18n } from '../i18n/I18nProvider';
+
+export default function Contact() {
+  const { t } = useI18n();
+>>>>>>> origin/sampritha-branch
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,14 +33,22 @@ export default function Contact() {
     setErrorMessage('');
 
     if (!formData.name || !formData.email || !formData.message) {
+<<<<<<< HEAD
       setErrorMessage('Please fill in all required fields');
+=======
+      setErrorMessage(t('contactFormErrorRequired'));
+>>>>>>> origin/sampritha-branch
       setStatus('error');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
+<<<<<<< HEAD
       setErrorMessage('Please enter a valid email address');
+=======
+      setErrorMessage(t('contactFormErrorEmail'));
+>>>>>>> origin/sampritha-branch
       setStatus('error');
       return;
     }
@@ -49,7 +64,11 @@ export default function Contact() {
       setFormData({ name: '', email: '', phone: '', message: '', serviceType: 'general' });
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
+<<<<<<< HEAD
       setErrorMessage('Failed to send message. Please try again.');
+=======
+      setErrorMessage(t('contactFormErrorSubmit'));
+>>>>>>> origin/sampritha-branch
       setStatus('error');
     }
   };
@@ -58,10 +77,16 @@ export default function Contact() {
     <>
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="max-w-3xl">
+<<<<<<< HEAD
           <h1 className="text-5xl font-bold text-slate-900 mb-6">Get In Touch</h1>
           <p className="text-xl text-slate-700">
             Have a project in mind? We'd love to hear from you. Let's build something amazing
             together.
+=======
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">{t('contactPageTitle')}</h1>
+          <p className="text-xl text-slate-700">
+            {t('contactPageDescription')}
+>>>>>>> origin/sampritha-branch
           </p>
         </div>
       </Section>
@@ -71,19 +96,31 @@ export default function Contact() {
           {[
             {
               icon: Mail,
+<<<<<<< HEAD
               title: 'Email',
+=======
+              title: t('contactEmailLabel'),
+>>>>>>> origin/sampritha-branch
               detail: 'hello@spirolink.com',
               link: 'mailto:hello@spirolink.com',
             },
             {
               icon: Phone,
+<<<<<<< HEAD
               title: 'Phone',
+=======
+              title: t('contactPhoneLabel'),
+>>>>>>> origin/sampritha-branch
               detail: '(555) 123-4567',
               link: 'tel:+15551234567',
             },
             {
               icon: MapPin,
+<<<<<<< HEAD
               title: 'Office',
+=======
+              title: t('contactOfficeLabel'),
+>>>>>>> origin/sampritha-branch
               detail: 'Namakkal, Tamil Nadu',
               link: '#',
             },
@@ -105,13 +142,21 @@ export default function Contact() {
       </Section>
 
       <Section className="bg-slate-50">
+<<<<<<< HEAD
         <SectionHeading title="Send us a Message" centered={true} />
+=======
+        <SectionHeading title={t('contactFormTitle')} centered={true} />
+>>>>>>> origin/sampritha-branch
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
+<<<<<<< HEAD
                   Name *
+=======
+                  {t('contactFormNameLabel')} *
+>>>>>>> origin/sampritha-branch
                 </label>
                 <input
                   type="text"
@@ -120,13 +165,21 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+<<<<<<< HEAD
                   placeholder="Your name"
+=======
+                  placeholder={t('contactFormNamePlaceholder')}
+>>>>>>> origin/sampritha-branch
                   required
                 />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
+<<<<<<< HEAD
                   Email *
+=======
+                  {t('contactFormEmailLabel')} *
+>>>>>>> origin/sampritha-branch
                 </label>
                 <input
                   type="email"
@@ -135,7 +188,11 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+<<<<<<< HEAD
                   placeholder="your@email.com"
+=======
+                  placeholder={t('contactFormEmailPlaceholder')}
+>>>>>>> origin/sampritha-branch
                   required
                 />
               </div>
@@ -143,7 +200,11 @@ export default function Contact() {
 
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-slate-900 mb-2">
+<<<<<<< HEAD
                 Phone
+=======
+                {t('contactFormPhoneLabel')}
+>>>>>>> origin/sampritha-branch
               </label>
               <input
                 type="tel"
@@ -152,13 +213,21 @@ export default function Contact() {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+<<<<<<< HEAD
                 placeholder="(555) 123-4567"
+=======
+                placeholder={t('contactFormPhonePlaceholder')}
+>>>>>>> origin/sampritha-branch
               />
             </div>
 
             <div>
               <label htmlFor="serviceType" className="block text-sm font-medium text-slate-900 mb-2">
+<<<<<<< HEAD
                 Service Type *
+=======
+                {t('contactFormServiceLabel')} *
+>>>>>>> origin/sampritha-branch
               </label>
               <select
                 id="serviceType"
@@ -167,6 +236,7 @@ export default function Contact() {
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
               >
+<<<<<<< HEAD
                 <option value="general">General Inquiry</option>
                 <option value="pon-ftth">PON & FTTH Network Planning</option>
                 <option value="microwave">Microwave Network Design</option>
@@ -174,12 +244,25 @@ export default function Contact() {
                 <option value="wifi">Enterprise Wi-Fi Network Planning</option>
                 <option value="consultation">Technical Consultation</option>
                 <option value="quote">Request a Quote</option>
+=======
+                <option value="general">{t('contactFormServiceGeneral')}</option>
+                <option value="pon-ftth">{t('contactFormServicePonFtth')}</option>
+                <option value="microwave">{t('contactFormServiceMicrowave')}</option>
+                <option value="optical">{t('contactFormServiceOptical')}</option>
+                <option value="wifi">{t('contactFormServiceWifi')}</option>
+                <option value="consultation">{t('contactFormServiceConsultation')}</option>
+                <option value="quote">{t('contactFormServiceQuote')}</option>
+>>>>>>> origin/sampritha-branch
               </select>
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-slate-900 mb-2">
+<<<<<<< HEAD
                 Message *
+=======
+                {t('contactFormMessageLabel')} *
+>>>>>>> origin/sampritha-branch
               </label>
               <textarea
                 id="message"
@@ -188,14 +271,22 @@ export default function Contact() {
                 onChange={handleChange}
                 rows={6}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none resize-none"
+<<<<<<< HEAD
                 placeholder="Tell us about your project or requirements..."
+=======
+                placeholder={t('contactFormMessagePlaceholder')}
+>>>>>>> origin/sampritha-branch
                 required
               ></textarea>
             </div>
 
             {status === 'success' && (
               <div className="p-4 bg-green-100 text-green-700 rounded-lg">
+<<<<<<< HEAD
                 Thank you! We've received your message and will get back to you soon with a quote or proposal.
+=======
+                {t('contactFormSuccessMessage')}
+>>>>>>> origin/sampritha-branch
               </div>
             )}
 
@@ -209,18 +300,29 @@ export default function Contact() {
               className="w-full"
               size="lg"
             >
+<<<<<<< HEAD
               {status === 'loading' ? 'Sending...' : 'Send Message'}
+=======
+              {status === 'loading' ? t('contactFormSending') : t('contactFormSubmitBtn')}
+>>>>>>> origin/sampritha-branch
             </Button>
           </form>
         </div>
       </Section>
 
       <Section className="bg-white">
+<<<<<<< HEAD
         <SectionHeading title="Response Time" centered={true} />
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-slate-600 mb-4">
             We typically respond to inquiries within 24 hours during business hours. For urgent
             matters, please call us directly.
+=======
+        <SectionHeading title={t('contactResponseTimeTitle')} centered={true} />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-slate-600 mb-4">
+            {t('contactResponseTimeMessage')}
+>>>>>>> origin/sampritha-branch
           </p>
         </div>
       </Section>

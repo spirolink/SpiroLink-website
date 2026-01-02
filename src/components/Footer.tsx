@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+<<<<<<< HEAD
 
 export function Footer() {
+=======
+import { ShareButton } from './ShareButton';
+import { useI18n } from '../i18n/I18nProvider';
+
+export function Footer() {
+  const { t } = useI18n();
+>>>>>>> origin/sampritha-branch
   const currentYear = new Date().getFullYear();
 
   return (
@@ -84,7 +92,12 @@ export function Footer() {
             <p className="text-slate-400 text-sm">
               © {currentYear} SPIROLINK. All rights reserved.
             </p>
+<<<<<<< HEAD
             <div className="flex gap-4">
+=======
+            <div className="flex gap-4 items-center">
+              <ShareButton />
+>>>>>>> origin/sampritha-branch
               <a
                 href="#"
                 className="text-slate-400 hover:text-green-400 transition"

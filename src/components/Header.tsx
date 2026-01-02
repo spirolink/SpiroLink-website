@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
+<<<<<<< HEAD
+=======
+import { CountrySelector } from './CountrySelector';
+import { LanguageSelector } from './LanguageSelector';
+import { useI18n } from '../i18n/I18nProvider';
+>>>>>>> origin/sampritha-branch
 
 interface NavItem {
   label: string;
   href: string;
   ariaLabel?: string;
+<<<<<<< HEAD
 }
 
 const navItems: NavItem[] = [
@@ -18,13 +25,31 @@ const navItems: NavItem[] = [
 ];
 
 export function Header() {
+=======
+  translationKey: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/', translationKey: 'home' },
+  { label: 'Services', href: '/services', translationKey: 'services' },
+  { label: 'Resources', href: '/resources', translationKey: 'resources' },
+  { label: 'Contact', href: '/contact', translationKey: 'contact' },
+];
+
+export function Header() {
+  const { t } = useI18n();
+>>>>>>> origin/sampritha-branch
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+<<<<<<< HEAD
   const headerRef = useRef<HTMLHeaderElement | null>(null);
+=======
+  const headerRef = useRef<HTMLElement | null>(null);
+>>>>>>> origin/sampritha-branch
 
   // Handle scroll events
   useEffect(() => {
@@ -101,6 +126,7 @@ export function Header() {
 
   return (
     <>
+<<<<<<< HEAD
 <header
   ref={headerRef}
   className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
@@ -109,6 +135,15 @@ export function Header() {
   role="banner"
 >
 
+=======
+      <header
+        ref={headerRef}
+        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
+          scrolled ? 'bg-black/92 backdrop-blur-sm' : 'bg-[#0b0b0b] backdrop-blur'
+        }`}
+        role="banner"
+      >
+>>>>>>> origin/sampritha-branch
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           {/* Logo and Brand */}
           <div className="flex items-center flex-shrink-0">
@@ -149,7 +184,11 @@ export function Header() {
                       aria-expanded={activeMenu === item.label}
                       aria-haspopup="true"
                     >
+<<<<<<< HEAD
                       {item.label}
+=======
+                      {t(item.translationKey as any)}
+>>>>>>> origin/sampritha-branch
                       <svg
                         className={`w-3 h-3 transition-transform duration-300 ${
                           activeMenu === item.label ? 'rotate-180' : ''
@@ -175,7 +214,11 @@ export function Header() {
                         styles.navItem
                       }`}
                     >
+<<<<<<< HEAD
                       {item.label}
+=======
+                      {t(item.translationKey as any)}
+>>>>>>> origin/sampritha-branch
                       <div className={styles.navUnderline} />
                     </Link>
                   )}
@@ -201,6 +244,7 @@ export function Header() {
           <div className="flex-1"></div>
 
           {/* Right side actions */}
+<<<<<<< HEAD
           <div className="flex items-center gap-6">
 
 
@@ -214,13 +258,27 @@ export function Header() {
             >
               IND
             </button>
+=======
+          <div className="flex items-center gap-4">
+            {/* Language Selector */}
+            <LanguageSelector />
+
+            {/* Country Selector */}
+            <CountrySelector />
+>>>>>>> origin/sampritha-branch
 
             {/* Sign In */}
             <button
               className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+<<<<<<< HEAD
               aria-label="Sign in"
             >
               Sign in
+=======
+              aria-label={t('signIn')}
+            >
+              {t('signIn')}
+>>>>>>> origin/sampritha-branch
             </button>
 
             {/* Mobile Menu Button */}
