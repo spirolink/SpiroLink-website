@@ -1,0 +1,32 @@
+Grant Application Technical Documentation
+===========================================
+
+This document is a placeholder for the actual template.
+In production, replace with the complete grant application guide.
+
+Supported Grant Programs:
+- USDA ReConnect
+- NTIA Infrastructure Grants
+- State Broadband Grants
+- Municipal Bond Programs
+- Private Investment Programs
+
+Typical Documentation Requirements:
+- Executive Summary
+- Service Area Maps
+- Technical Architecture Diagrams
+- Cost Estimates & Budget
+- Timeline & Milestones
+- Operational Plan
+- Financial Projections
+- Environmental Assessments
+- Community Support Letters
+
+Key Metrics:
+- Homes Passed
+- Investment per Home
+- Expected Download Speeds
+- Latency & Reliability Targets
+- Job Creation Estimates
+
+For template and guidance, reach out to our grants consulting team.

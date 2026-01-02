@@ -1,0 +1,23 @@
+Cost Per Home Passed Estimator
+==============================
+
+This file is a placeholder for the actual Excel calculator.
+In production, replace with: Cost_Per_Home_Passed_Estimator.xlsx
+
+The calculator includes:
+- Fiber length estimation
+- Material costs (aerial, underground, conduit)
+- Labor costs by region
+- Network equipment costs
+- Scaling factors
+- Take-rate impact analysis
+- ROI calculations
+
+Inputs Required:
+- Homes Passed (HHP)
+- Service Area Density (rural/suburban/urban)
+- Deployment Type (aerial/underground/mixed)
+- Technology Choice (GPON/XGS-PON/NG-PON2)
+- Fiber Length Estimate
+
+For the interactive Excel version, contact our sales team.

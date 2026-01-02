@@ -1,0 +1,15 @@
+FTTH Network Planning Best Practices
+=====================================
+
+This document is a placeholder for the actual PDF.
+In production, replace this with the complete FTTH Network Planning Best Practices guide.
+
+Key Topics:
+- Service Area Analysis
+- Network Topology Selection
+- Central Office & Hub Planning
+- Fiber Route Engineering
+- Scalability Considerations
+- Cost Optimization
+
+Please contact us for the complete guide.

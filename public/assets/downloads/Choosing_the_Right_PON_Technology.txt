@@ -1,0 +1,21 @@
+Choosing the Right PON Technology
+==================================
+
+This document is a placeholder for the actual PDF.
+In production, replace this with the complete technical comparison guide.
+
+Covered Technologies:
+- GPON (Gigabit-capable PON)
+- XG-PON (10 Gigabit-capable PON)
+- XGS-PON (Symmetric 10G)
+- NG-PON2 (Next Generation PON 2)
+- EPON (Ethernet PON)
+
+Comparison Criteria:
+- Speed & Bandwidth
+- Cost Efficiency
+- Deployment Complexity
+- Scalability
+- Market Availability
+
+Contact us for detailed technical specifications.
