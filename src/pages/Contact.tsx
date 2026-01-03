@@ -43,7 +43,7 @@ export default function Contact() {
       // Determine API URL - use local backend in development
       const backendUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:5001'
-        : 'https://spirolink-web-backend.onrender.com';
+        : 'https://spirolink-web-backend-2.onrender.com';
 
       const response = await fetch(`${backendUrl}/contact`, {
         method: 'POST',
