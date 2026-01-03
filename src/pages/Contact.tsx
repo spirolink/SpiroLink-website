@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
-import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { useI18n } from '../i18n/I18nProvider';
 
@@ -28,30 +27,47 @@ export default function Contact() {
     setErrorMessage('');
 
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage(t('contactFormErrorRequired'));
+      setErrorMessage(t('contactFormErrorRequired') || 'Please fill in all required fields');
       setStatus('error');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setErrorMessage(t('contactFormErrorEmail'));
+      setErrorMessage(t('contactFormErrorEmail') || 'Please enter a valid email');
       setStatus('error');
       return;
     }
 
     try {
-      // Simulate form submission delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Determine API URL based on environment
+      const apiUrl = import.meta.env.DEV 
+        ? 'http://localhost:5001/contact'
+        : 'https://spirolink-web-backend.onrender.com/contact';
 
-      // In a real app, you would send this data to your backend
-      console.log('Form data:', formData);
+      // Send to backend
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '', serviceType: 'general' });
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
-      setErrorMessage(t('contactFormErrorSubmit'));
+      console.error('Error sending contact form:', err);
+      setErrorMessage(
+        err instanceof Error ? err.message : (t('contactFormErrorSubmit') || 'Failed to send message. Please try again.')
+      );
       setStatus('error');
     }
   };
@@ -80,21 +96,21 @@ export default function Contact() {
             {
               icon: Mail,
               title: 'Email',
-              detail: 'hello@spirolink.com',
-              link: 'mailto:hello@spirolink.com',
+              detail: 'contact@spirolink.com',
+              link: 'mailto:contact@spirolink.com',
               color: 'from-blue-50'
             },
             {
               icon: Phone,
               title: 'Phone',
-              detail: '(555) 123-4567',
+              detail: '+1 (617) 680-4300',
               link: 'tel:+15551234567',
               color: 'from-cyan-50'
             },
             {
               icon: MapPin,
               title: 'Office',
-              detail: 'Namakkal, Tamil Nadu',
+              detail: '9300 coit RD,APT 214,Plano,TX-75025',
               link: '#',
               color: 'from-purple-50'
             },

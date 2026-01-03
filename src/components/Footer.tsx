@@ -66,15 +66,15 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-slate-400">
                 <Mail className="w-4 h-4" />
-                <span>hello@spirolink.com</span>
+                <span>contact@spirolink.com</span>
               </li>
               <li className="flex items-center gap-2 text-slate-400">
                 <Phone className="w-4 h-4" />
-                <span>(555) 123-4567</span>
+                <span>+1 (617) 680-4300</span>
               </li>
               <li className="flex items-start gap-2 text-slate-400">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>Namakkal, TN</span>
+                <span>Registered Office: SpiroLink LLC 8 THE GRN STE B DOVER, DE 19901</span>
               </li>
             </ul>
           </div>
