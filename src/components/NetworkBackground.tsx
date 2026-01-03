@@ -18,25 +18,25 @@ export default function NetworkBackground() {
       if (window.particlesJS) {
         window.particlesJS('particles-network', {
           particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: '#00bfff' },
+            number: { value: 120, density: { enable: true, value_area: 800 } },
+            color: { value: '#00ffff' },
             shape: { type: 'circle' },
             opacity: { 
-              value: 0.5, 
+              value: 0.9, 
               random: true,
-              anim: { enable: true, speed: 1, opacity_min: 0.3 }
+              anim: { enable: true, speed: 1.5, opacity_min: 0.5 }
             },
             size: { 
-              value: 3, 
+              value: 5, 
               random: true,
-              anim: { enable: true, speed: 2, size_min: 1 }
+              anim: { enable: true, speed: 2.5, size_min: 2 }
             },
             line_linked: {
               enable: true,
-              distance: 150,
-              color: '#00bfff',
-              opacity: 0.4,
-              width: 1
+              distance: 220,
+              color: '#00ffff',
+              opacity: 0.75,
+              width: 1.5
             },
             move: { 
               enable: true, 
@@ -57,12 +57,12 @@ export default function NetworkBackground() {
             },
             modes: {
               grab: { 
-                distance: 200, 
+                distance: 350, 
                 line_linked: { opacity: 1 },
                 duration: 0.5
               },
               push: {
-                particles_nb: 4
+                particles_nb: 8
               }
             }
           },
@@ -93,7 +93,7 @@ export default function NetworkBackground() {
           width: '100%',
           height: '100%',
           zIndex: 0,
-          background: 'linear-gradient(135deg, rgba(0, 10, 20, 0.4) 0%, rgba(0, 20, 40, 0.3) 100%)',
+          background: 'linear-gradient(135deg, rgba(0, 8, 18, 0.6) 0%, rgba(0, 18, 40, 0.5) 100%)',
           pointerEvents: 'none'
         }}
       />
