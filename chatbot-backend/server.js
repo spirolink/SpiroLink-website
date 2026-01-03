@@ -111,8 +111,10 @@ app.post("/contact", async (req, res) => {
       });
     }
 
+    console.log(`📧 Sending contact form from ${email}...`);
+
     // Email to company
-    await resend.emails.send({
+    const companyEmailResponse = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "contact@spirolink.com",
       subject: `New Contact Form - ${serviceType || "General"}`,
@@ -129,8 +131,10 @@ app.post("/contact", async (req, res) => {
       `,
     });
 
+    console.log(`✅ Company email sent:`, companyEmailResponse);
+
     // Confirmation email to user
-    await resend.emails.send({
+    const userEmailResponse = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
       subject: "We received your message - SPIROLINK",
@@ -143,14 +147,16 @@ app.post("/contact", async (req, res) => {
       `,
     });
 
-    console.log(`✅ Contact form email sent from ${email} (${serviceType})`);
+    console.log(`✅ User confirmation email sent:`, userEmailResponse);
 
     res.json({
       success: true,
       message: "Email sent successfully",
+      companyEmail: companyEmailResponse,
+      userEmail: userEmailResponse,
     });
   } catch (error) {
-    console.error("❌ Email error:", error.message);
+    console.error("❌ Email error:", error);
     res.status(500).json({
       success: false,
       error: "Failed to send email: " + error.message,
