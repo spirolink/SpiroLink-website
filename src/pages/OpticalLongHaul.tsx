@@ -11,8 +11,8 @@ export default function OpticalLongHaul() {
   return (
     <>
       <ServiceHero
-        title="Long-Haul Optical Network Planning Services"
-        description="Designing high-capacity, resilient fiber optic networks for carriers, enterprises, and global infrastructure"
+        title="Optical Networks Designed to Perform Long After Day One"
+        description="Optical networks are built to last decades, but many are designed only for initial turn-up. We design long-haul and backbone optical systems with margins, scale, and operational reality in mind—so they continue to perform as traffic, distances, and complexity grow."
         badge="Long-Haul Optical Infrastructure"
         badgeIcon="🌍"
         themeColor="cyan"
@@ -20,72 +20,57 @@ export default function OpticalLongHaul() {
 
       <Section className="bg-white relative py-16">
         <SectionHeading
-          title="Professional Optical Network Planning"
-          subtitle="Long-Haul Fiber Infrastructure"
+          title="The Hidden Complexity of Optical Networks"
+          subtitle="Why Initial Design Matters for Decades"
           centered={true}
         />
         <div className="text-center max-w-3xl mx-auto mt-8">
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            Long-haul optical networks form the backbone of modern digital infrastructure, connecting cities, regions, data centers, and critical services across vast distances. Designing these networks requires rigorous engineering around signal integrity, availability, scalability, and operational risk.
+            In reality, many optical networks are designed primarily to meet day-one requirements. As traffic grows, routes extend, or new wavelengths are added, hidden limitations begin to surface—loss margins tighten, OSNR degrades, and amplification strategies that once worked no longer scale cleanly.
+          </p>
+          <p className="text-slate-600 text-lg leading-relaxed mb-6">
+            Because fiber infrastructure is permanent, correcting these design decisions later becomes expensive, disruptive, and operationally risky.
           </p>
           <p className="text-slate-600 text-lg leading-relaxed">
-            We specialize in planning and designing high-capacity optical fiber networks that deliver terabit-scale capacity, ultra-low latency, and exceptional reliability for carriers, ISPs, data center operators, and large enterprises.
+            At SpiroLink, we design long-haul optical networks with long-term performance in mind. Our focus is not just on initial turn-up, but on building optical systems that continue to operate predictably as capacity, distance, and complexity increase over time.
           </p>
         </div>
       </Section>
 
-      <ServiceSection title="Network Design Services" subtitle="Comprehensive Planning & Engineering">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Route Planning & Feasibility</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li>• Geographic route analysis</li>
-              <li>• Fiber availability assessment</li>
-              <li>• Cost estimation & optimization</li>
-              <li>• Regulatory pathway identification</li>
-            </ul>
+      <ServiceSection title="Why Optical Networks Become Risky Over Time" subtitle="Hidden Constraints That Surface Later" isDark={false}>
+        <div className="max-w-4xl mx-auto space-y-3">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">Initial Turn-Up Success Masks Long-Term Issues:</span> Optical networks often perform well at initial turn-up, but hidden constraints surface as traffic grows and spans are extended.</p>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">DWDM System Design</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li>• Dense wavelength multiplexing</li>
-              <li>• Transponder configuration</li>
-              <li>• Amplification strategy</li>
-              <li>• Channel planning</li>
-            </ul>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">Loss Budgets Are Gradually Consumed:</span> Loss budgets are gradually consumed by splices, connectors, fiber aging, and undocumented changes, leaving little margin for future expansion.</p>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Link Budget & Optimization</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li>• Optical loss analysis</li>
-              <li>• Signal integrity assessment</li>
-              <li>• Regenerator placement</li>
-              <li>• Performance optimization</li>
-            </ul>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">OSNR Degradation Is Underestimated:</span> OSNR degradation is frequently underestimated, especially when adding higher-order modulation formats or increasing channel counts.</p>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Resilience & Protection</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li>• Redundancy architecture</li>
-              <li>• Protection switching design</li>
-              <li>• Mesh networking strategies</li>
-              <li>• Disaster recovery planning</li>
-            </ul>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">Amplification Strategies Don't Scale:</span> Amplification strategies that work for early deployments often fail to scale cleanly as wavelengths, distances, or bands are added.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">Documentation Drift Causes Operational Risk:</span> Poor or outdated documentation makes troubleshooting slow and risky years after deployment, when original design assumptions are no longer visible.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <p className="text-slate-700"><span className="font-semibold">Redesign Costs Mount Quickly:</span> Because fiber infrastructure is permanent, correcting design shortcomings later becomes costly, disruptive, and operationally complex.</p>
           </div>
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Industries We Serve" subtitle="Sector-Specific Solutions">
+      <ServiceSection title="Where We Take Responsibility" subtitle="Sectors Dependent on Optical Performance">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-12 overflow-hidden">
           <div className="col-span-full overflow-x-hidden">
             <div className="flex gap-6 slide-left-right">
               {[
-                { title: "Telecommunications Carriers", desc: "National and international backbone networks, international gateway systems, cross-border connectivity, and global internet exchange points.", icon: "📡", color: "from-orange-50 to-red-50", border: "border-orange-200" },
-                { title: "Internet Service Providers", desc: "High-capacity backbone infrastructure, regional fiber networks, data center interconnections, and content delivery networks.", icon: "🌐", color: "from-amber-50 to-orange-50", border: "border-amber-200" },
-                { title: "Data Center Operators", desc: "Campus-wide interconnections, multi-data center replication, disaster recovery links, and cloud infrastructure networks.", icon: "🏢", color: "from-yellow-50 to-amber-50", border: "border-yellow-200" },
-                { title: "Enterprise & Financial Services", desc: "Wide-area network backbones, branch office interconnections, trading network links, and business continuity systems.", icon: "💼", color: "from-orange-50 to-yellow-50", border: "border-orange-200" },
-                { title: "Cable & Broadcasting", desc: "Content distribution networks, broadcast centers, master control centers, and media transport networks.", icon: "📺", color: "from-red-50 to-orange-50", border: "border-red-200" },
-                { title: "Government & Military", desc: "Secure government networks, strategic communications infrastructure, critical infrastructure protection, and classified networks.", icon: "🛡️", color: "from-rose-50 to-red-50", border: "border-rose-200" }
+                { title: "Telecommunications & Mobile Operators", desc: "National and regional optical backbones must scale continuously while supporting strict availability targets. We design long-haul and metro optical transport that accommodates traffic growth, new wavelengths, and evolving modulation without forcing disruptive redesigns later.", icon: "📡", color: "from-orange-50 to-red-50", border: "border-orange-200" },
+                { title: "Internet Service Providers (ISPs)", desc: "ISPs rely on optical backbone networks to expand coverage, peer efficiently, and support rising bandwidth demand. We design fiber and DWDM systems that scale predictably, helping ISPs grow capacity without eroding margins or operational stability.", icon: "🌐", color: "from-amber-50 to-orange-50", border: "border-amber-200" },
+                { title: "Data Center & Cloud Operators", desc: "Inter–data center connectivity demands high capacity, low latency, and absolute predictability. We design optical transport for DCI environments that supports large-scale replication, cloud interconnection, and future capacity upgrades without compromising performance.", icon: "🏢", color: "from-yellow-50 to-amber-50", border: "border-yellow-200" },
+                { title: "Enterprise & Corporate Networks", desc: "Large enterprises depend on private optical networks for mission-critical applications across multiple sites. We design resilient optical transport that balances security, capacity, and long-term operational simplicity as enterprise needs evolve.", icon: "💼", color: "from-orange-50 to-yellow-50", border: "border-orange-200" },
+                { title: "Utilities & Critical Infrastructure", desc: "Optical networks supporting power grids, pipelines, and control systems must operate continuously under harsh conditions. We design transport networks with resilience and margin built in, ensuring critical services remain connected even as infrastructure ages.", icon: "⚡", color: "from-red-50 to-orange-50", border: "border-red-200" },
+                { title: "Research, Education & Public Sector", desc: "Research and public-sector networks demand high-capacity connectivity for collaboration, data movement, and national infrastructure. We design optical systems that support sustained growth and long service lifecycles, not short-term capacity spikes.", icon: "🔬", color: "from-rose-50 to-red-50", border: "border-rose-200" }
               ].map((item, idx) => (
                 <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -101,236 +86,154 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Our Design Approach" subtitle="6-Phase Methodology" themeColor="cyan">
+      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design Optical Networks" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>1</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Requirements & Objectives Analysis</h4>
-                <p className="text-slate-700">Comprehensive assessment of capacity requirements, latency targets, availability needs, budget constraints, and future growth plans.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Designed Beyond Day One</h4>
+                <p className="text-slate-700">Many optical networks are engineered to meet initial turn-up targets. We design for what happens later—when spans are extended, wavelengths are added, and margins begin to erode. Our designs anticipate growth before it becomes a problem.</p>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>2</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Route Selection & Feasibility</h4>
-                <p className="text-slate-700">Geographic analysis, terrain assessment, fiber availability evaluation, environmental considerations, and cost-benefit optimization.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Margin-Driven Engineering</h4>
+                <p className="text-slate-700">We treat optical margins as operational insurance, not theoretical numbers. Loss budgets, OSNR, dispersion, and nonlinear effects are engineered conservatively so networks remain stable under real traffic conditions, not just lab assumptions.</p>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>3</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Optical System Design</h4>
-                <p className="text-slate-700">DWDM configuration, transponder selection, regenerator placement, amplification strategy, and channel planning for terabit-scale capacity.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Amplification and Line System Discipline</h4>
+                <p className="text-slate-700">Amplifier placement, gain strategy, and line system design matter more than raw capacity. We focus on balanced EDFA and Raman strategies that scale cleanly as channels, bands, and modulation formats evolve.</p>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>4</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Link Budget & Performance Analysis</h4>
-                <p className="text-slate-700">Comprehensive link budget calculations, signal integrity analysis, noise figure assessment, and margin optimization across all wavelengths.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Growth Without Redesign</h4>
+                <p className="text-slate-700">Optical networks should scale without forcing disruptive rebuilds. We design wavelength plans, ROADM architectures, and spectrum usage so capacity can grow incrementally without destabilizing existing services.</p>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>5</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Resilience & Redundancy Design</h4>
-                <p className="text-slate-700">Protection switching architecture, mesh networking strategies, automatic recovery mechanisms, and disaster recovery procedures.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Vendor-Neutral by Principle</h4>
+                <p className="text-slate-700">Our designs are driven by engineering constraints and operational goals, not by vendor alignment. This allows our clients to select platforms that fit their environment today while preserving flexibility tomorrow.</p>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>6</div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Implementation & Support</h4>
-                <p className="text-slate-700">Detailed documentation, equipment specifications, site acquisition support, vendor selection, commissioning oversight, and ongoing optimization.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Documentation That Survives Time</h4>
+                <p className="text-slate-700">Poor documentation is one of the most common causes of optical outages years later. We deliver clear, auditable design documentation so future teams can understand, operate, and evolve the network with confidence.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>7</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Ownership Mindset</h4>
+                <p className="text-slate-700">We work as long-term partners, taking shared responsibility for how optical networks perform over their lifecycle—not just how they are initially deployed.</p>
               </div>
             </div>
           </div>
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Technical Capabilities" subtitle="Advanced Optical Engineering" isDark={false} themeColor="cyan">
+      <ServiceSection title="Did You Know? — Optical Network Insights" subtitle="Key Concepts That Drive Better Design" isDark={false} themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Capacity & Distance</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Terabit-scale systems (25+ Tbps)</li>
-              <li>• Ultra-long-haul spans (2000+ km)</li>
-              <li>• Regenerator-less configurations</li>
-              <li>• Coherent optical technology</li>
-            </ul>
+            <h3 className="font-bold text-slate-900 mb-2">OSNR Is the Real Bottleneck</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Most optical networks hit OSNR limits before fiber loss limits.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> As channel counts increase or higher-order modulation is introduced, OSNR degrades faster than expected. Networks often fail to scale not because fiber is exhausted, but because noise accumulation was underestimated during initial design.</p>
           </div>
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Fiber & Infrastructure</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Single-mode fiber design</li>
-              <li>• Dispersion management</li>
-              <li>• ROADM architectures</li>
-              <li>• Amplification strategies</li>
-            </ul>
+            <h3 className="font-bold text-slate-900 mb-2">Fiber Ages, Margins Shrink</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Optical margins silently erode over time—even without fiber cuts.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> Microbends, splice degradation, connector contamination, and temperature variation gradually consume loss and OSNR margins. Designs that work comfortably on day one may struggle years later if aging is not accounted for.</p>
           </div>
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Standards & Compliance</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• ITU-T recommendations</li>
-              <li>• International standards</li>
-              <li>• Regional regulations</li>
-              <li>• Industry best practices</li>
-            </ul>
+            <h3 className="font-bold text-slate-900 mb-2">Amplifier Placement Matters More Than Gain</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> More amplifier gain does not fix a poorly designed line system.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> EDFA and Raman placement, span length balance, and gain tilt management determine long-term stability. Improper amplification strategies amplify noise and nonlinear effects, limiting future scalability.</p>
           </div>
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Routing & Protection</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• 1+1 Protection switching</li>
-              <li>• Mesh restoration</li>
-              <li>• Automatic protection (APS/PCS)</li>
-              <li>• Multi-layer resilience</li>
-            </ul>
+            <h3 className="font-bold text-slate-900 mb-2">Coherent Optics Don't Eliminate Dispersion Planning</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Chromatic dispersion still matters—even with modern coherent optics.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> While coherent receivers compensate dispersion digitally, excessive unmanaged dispersion increases DSP complexity, power consumption, and reduces OSNR tolerance—especially on ultra-long-haul paths.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">ROADM Design Determines Upgrade Pain</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Many optical upgrades fail because of ROADM architecture, not fiber.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> Fixed or poorly planned ROADM designs constrain wavelength flexibility and force disruptive upgrades later. CDC-F ROADM planning enables capacity growth without service impact.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Nonlinear Effects Limit Scale Before Hardware Does</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Fiber nonlinearities often cap capacity before transceivers do.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> SPM, XPM, and FWM increase rapidly as channel density grows. Without careful launch power control and spectrum planning, nonlinear penalties silently limit achievable reach and modulation.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Documentation Drift Causes More Outages Than Fiber Cuts</h3>
+            <p className="text-slate-700 text-sm mb-3"><span className="font-semibold">Did you know?</span> Many optical outages occur because design intent is lost—not because fiber fails.</p>
+            <p className="text-slate-700 text-sm"><span className="font-semibold">Engineering insight:</span> When documentation diverges from reality, troubleshooting becomes slow and risky. Clear, lifecycle-grade documentation is as critical as the optical design itself.</p>
           </div>
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Network Types We Design" subtitle="Specialized Solutions" themeColor="cyan">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">National Carrier Backbones</h3>
-            <p className="text-slate-700 text-sm">Nationwide mesh networks connecting major cities, regions, and critical infrastructure with redundancy and high availability requirements.</p>
-          </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">International Corridors</h3>
-            <p className="text-slate-700 text-sm">Cross-border systems connecting countries, continents, and global gateway points with regulatory compliance and geopolitical considerations.</p>
-          </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Data Center Interconnects</h3>
-            <p className="text-slate-700 text-sm">High-capacity links between data center campuses supporting replication, disaster recovery, and cloud service delivery across regions.</p>
-          </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Content Distribution Networks</h3>
-            <p className="text-slate-700 text-sm">Optimized fiber networks delivering video, streaming, and content services with high capacity and low latency for end users.</p>
-          </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Submarine Cable Networks</h3>
-            <p className="text-slate-700 text-sm">Undersea cable system design, landing station engineering, international gateway integration, and multi-operator requirements.</p>
-          </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Enterprise Wide-Area Networks</h3>
-            <p className="text-slate-700 text-sm">Private enterprise networks connecting global locations with dedicated capacity, security, and performance guarantees.</p>
-          </div>
-        </div>
-      </ServiceSection>
-
-      <ServiceSection title="Key Design Considerations" subtitle="Critical Success Factors" isDark themeColor="cyan">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
-            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
-            <div>
-              <h4 className="font-semibold text-white">Signal Integrity & Reach</h4>
-              <p className="text-slate-300 text-sm">Comprehensive link budget analysis ensuring signal reaches destination with sufficient margin for aging fiber and environmental variations.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
-            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
-            <div>
-              <h4 className="font-semibold text-white">Redundancy Architecture</h4>
-              <p className="text-slate-300 text-sm">Diverse routing, protection switching mechanisms, and mesh topologies designed for survivability and rapid recovery from failures.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
-            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
-            <div>
-              <h4 className="font-semibold text-white">Scalability & Growth</h4>
-              <p className="text-slate-300 text-sm">Infrastructure supporting capacity upgrades without network redesign, enabling evolution from current to future needs over 10-15 year lifecycle.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
-            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
-            <div>
-              <h4 className="font-semibold text-white">Cost Optimization</h4>
-              <p className="text-slate-300 text-sm">Equipment selection, fiber routing, and site acquisition strategies optimized for total cost of ownership while maintaining performance and reliability.</p>
-            </div>
-          </div>
-        </div>
-      </ServiceSection>
-
-      <ServiceSection title="Why Choose Our Optical Solutions" subtitle="What Sets Us Apart" themeColor="cyan">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Deep Technical Expertise</h4>
-              <p className="text-slate-700 text-sm">Experience designing networks for major carriers, ISPs, data centers, and enterprises globally, spanning all network types and technologies.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Proven Success Track Record</h4>
-              <p className="text-slate-700 text-sm">Successfully delivered national backbones, international corridors, data center networks, and enterprise solutions operating reliably at scale.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Cost-Effective Designs</h4>
-              <p className="text-slate-700 text-sm">Optimized solutions that deliver required capacity and reliability while controlling capital expenditure and operational costs.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Future-Ready Architecture</h4>
-              <p className="text-slate-700 text-sm">Designs that accommodate evolving technologies, standards, and capacity requirements over network's 10-15 year lifespan.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Regulatory & Compliance Navigation</h4>
-              <p className="text-slate-700 text-sm">Expert guidance through international regulations, right-of-way requirements, environmental approvals, and licensing across jurisdictions.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Comprehensive Documentation</h4>
-              <p className="text-slate-700 text-sm">Complete technical specifications, vendor requirements, implementation roadmaps, and operational procedures for successful deployment.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Ongoing Support & Optimization</h4>
-              <p className="text-slate-700 text-sm">Deployment oversight, commissioning support, and post-launch optimization ensuring network achieves designed performance and reliability.</p>
-            </div>
-          </div>
-          <div className="flex gap-4 items-start">
-            <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>→</span>
-            <div>
-              <h4 className="font-semibold text-slate-900">Vendor-Neutral Approach</h4>
-              <p className="text-slate-700 text-sm">Objective equipment recommendations and system architecture independent of vendor relationships, ensuring best value for your investment.</p>
-            </div>
-          </div>
-        </div>
-      </ServiceSection>
-
-      <Section className="bg-white relative py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready to Transform Your Optical Infrastructure?</h2>
-          <p className="text-lg text-slate-600 mb-8">
-            Contact us today for network planning, feasibility studies, system design, regulatory support, and full implementation services for your long-haul optical network.
+      <ServiceSection title="Review Your Optical Design Before Growth Makes It Expensive" subtitle="Thinking-First Approach" isDark={false} themeColor="cyan">
+        <div className="max-w-3xl mx-auto mt-8">
+          <p className="text-slate-700 text-lg leading-relaxed mb-6">
+            Optical networks rarely fail at turn-up.
           </p>
-          <Link to="/contact">
-            <Button className="text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all" style={{backgroundColor: '#0C94CE'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}>
-              Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
+          <p className="text-slate-700 text-lg leading-relaxed mb-6">
+            They fail later—when traffic grows, spans extend, and margins quietly disappear.
+          </p>
+          <p className="text-slate-700 text-lg leading-relaxed">
+            Before committing to new builds, upgrades, or additional wavelengths, it helps to review whether the optical design will scale cleanly over time.
+          </p>
         </div>
-      </Section>
+      </ServiceSection>
+
+      <ServiceSection title="Optical Network Planning FAQ" subtitle="Common Questions About Our Approach" isDark={false} themeColor="cyan">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you work on existing optical networks or only new builds?</h3>
+            <p className="text-slate-700">We support both. Many of our engagements involve reviewing and optimizing existing fiber and DWDM networks before upgrades or capacity expansion.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Are your optical designs vendor-neutral?</h3>
+            <p className="text-slate-700">Yes. Our designs are driven by engineering constraints, operational goals, and long-term scalability—not vendor alignment.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Can you review third-party or legacy optical designs?</h3>
+            <p className="text-slate-700">Absolutely. We frequently assess designs created by vendors or integrators to identify scaling risks, margin limitations, and documentation gaps before changes are implemented.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you support DWDM, ROADM, and OTN-based architectures?</h3>
+            <p className="text-slate-700">Yes. We design across DWDM, ROADM, and OTN layers, focusing on clean integration and long-term operational stability.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Is optical planning only relevant for very large networks?</h3>
+            <p className="text-slate-700">No. Optical planning becomes critical whenever capacity growth, long distances, or high availability are required—regardless of network size.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you provide equipment, fiber, or installation services?</h3>
+            <p className="text-slate-700">We focus on planning and design. We can support implementation through documentation, technical guidance, and coordination with qualified installation partners.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Can you help with long-term growth and migration planning?</h3>
+            <p className="text-slate-700">Yes. We regularly design multi-year evolution plans that allow capacity to grow without forcing disruptive redesigns or service interruptions.</p>
+          </div>
+        </div>
+      </ServiceSection>
+
+
 
       <CTA
-        title="Ready to Design Your Long-Haul Optical Network?"
-        description="Contact us for network planning, feasibility studies, system design, equipment selection, regulatory support, and implementation services"
+        title="Discuss Your Optical Transport Challenges"
+        description="Review an existing or planned optical design, or discuss your long-haul network planning needs with our team"
       />
     </>
   );
