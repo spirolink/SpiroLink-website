@@ -21,7 +21,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4" style={{ color: PRIMARY_COLOR }}>Navigation</h3>
+            <h3 className="font-semibold mb-4" style={{ color: '#ffffff' }}>Navigation</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/" className="text-gray-400 hover:text-white transition">
@@ -47,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4" style={{ color: PRIMARY_COLOR }}>Legal</h3>
+            <h3 className="font-semibold mb-4" style={{ color: '#ffffff' }}>Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/privacy" className="text-gray-400 hover:text-white transition">
@@ -63,7 +63,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4" style={{ color: PRIMARY_COLOR }}>Contact</h3>
+            <h3 className="font-semibold mb-4" style={{ color: '#ffffff' }}>Contact</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-gray-400">
                 <Mail className="w-4 h-4" />
@@ -81,7 +81,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t pt-8" style={{ borderColor: PRIMARY_COLOR + '40' }}>
+        <div className="border-t pt-8" style={{ borderColor: '#ffffff40' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
               © {currentYear} SPIROLINK. All rights reserved.

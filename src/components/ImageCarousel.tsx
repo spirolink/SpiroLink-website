@@ -10,6 +10,7 @@ interface ImageCarouselProps {
   images?: CarouselImage[];
   autoRotateInterval?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const DEFAULT_IMAGES: CarouselImage[] = [
@@ -23,6 +24,7 @@ export function ImageCarousel({
   images = DEFAULT_IMAGES,
   autoRotateInterval = 4000,
   className = '',
+  style = {},
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -61,21 +63,26 @@ export function ImageCarousel({
   return (
     <div
       className={`relative w-full bg-white rounded-2xl overflow-hidden shadow-lg ${className}`}
-      style={{ aspectRatio: '16/9', maxWidth: '100%' }}
+      style={{ aspectRatio: '16/9', maxWidth: '100%', ...style }}
     >
       {/* Images Container */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ${
+            className={`absolute inset-0 transition-opacity duration-700 flex items-center justify-center ${
               index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              style={{ 
+                objectFit: style.objectFit || 'cover',
+                maxWidth: '100%',
+                maxHeight: '100%'
+              }}
               loading={index === currentIndex ? 'eager' : 'lazy'}
             />
             {/* Overlay Gradient */}
