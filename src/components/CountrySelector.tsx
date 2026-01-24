@@ -100,31 +100,46 @@ export function CountrySelector() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-2 rounded"
+        className="hidden md:flex text-gray-700 text-sm font-semibold hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-2 rounded items-center gap-1 hover:bg-gray-100"
         aria-label={`${t('country')}: ${selectedCountryName} ${isLoadingLocation ? '(Detecting...)' : ''}`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         disabled={isLoadingLocation}
       >
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h3a2 2 0 002-2v-1a2 2 0 012-2h2.049M8 7a4 4 0 100 8 4 4 0 000-8zM12.574 15.5a6 6 0 01-5.49.495m10.848 1.988A9 9 0 1112 3m6.574 12.5a6 6 0 01-5.49.495"
+          />
+        </svg>
         {isLoadingLocation ? '🌍' : selectedCountry}
+        <span className="text-xs hidden sm:inline text-gray-600">({selectedCountryName})</span>
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-64 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-40"
+          className="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-xl z-40"
           role="listbox"
         >
           {/* Search Input */}
-          <div className="p-3 border-b border-gray-700">
+          <div className="p-3 border-b border-gray-300">
             <input
               ref={searchInputRef}
               type="text"
               placeholder={t('selectCountry')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-800 text-white rounded border border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400 text-sm"
+              className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:border-blue-500 placeholder-gray-400 text-sm"
               aria-label="Search countries"
             />
           </div>
@@ -136,10 +151,10 @@ export function CountrySelector() {
                 <li key={country.code}>
                   <button
                     onClick={() => handleCountrySelect(country.code)}
-                    className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-800 transition-colors flex justify-between items-center ${
+                    className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-100 transition-colors flex justify-between items-center ${
                       selectedCountry === country.code
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-200'
+                        ? 'bg-blue-50 text-blue-700 font-semibold'
+                        : 'text-gray-700'
                     }`}
                     role="option"
                     aria-selected={selectedCountry === country.code}
@@ -150,7 +165,7 @@ export function CountrySelector() {
                 </li>
               ))
             ) : (
-              <li className="px-4 py-3 text-gray-400 text-sm text-center">
+              <li className="px-4 py-3 text-gray-500 text-sm text-center">
                 No countries found
               </li>
             )}

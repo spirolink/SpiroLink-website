@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, X, MessageCircle, Loader, Mic, Volume2 } from 'lucide-react';
 
+const PRIMARY_COLOR = '#0C94CE';
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -144,7 +146,8 @@ export default function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 z-40 flex items-center gap-2"
+          className="fixed bottom-6 right-6 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 z-40 flex items-center gap-2 hover:opacity-90"
+          style={{ backgroundColor: PRIMARY_COLOR }}
           aria-label="Open chatbot"
         >
           <MessageCircle className="w-6 h-6" />
@@ -156,7 +159,7 @@ export default function Chatbot() {
       {isOpen && (
         <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-2xl flex flex-col h-[600px] z-50 border border-gray-200">
           {/* Header */}
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+          <div className="text-white p-4 rounded-t-lg flex items-center justify-between" style={{ backgroundColor: PRIMARY_COLOR }}>
             <div>
               <h3 className="font-bold text-lg">SPIROLINK Assistant</h3>
               <p className="text-xs opacity-90">Powered by ChatGPT</p>
@@ -180,9 +183,10 @@ export default function Chatbot() {
                 <div
                   className={`max-w-xs px-4 py-2 rounded-lg flex items-start gap-2 ${
                     msg.role === 'user'
-                      ? 'bg-green-600 text-white rounded-br-none'
+                      ? 'text-white rounded-br-none'
                       : 'bg-gray-200 text-gray-900 rounded-bl-none'
                   }`}
+                  style={msg.role === 'user' ? { backgroundColor: PRIMARY_COLOR } : {}}
                 >
                   <p className="text-sm leading-relaxed flex-1">{msg.content}</p>
                   {msg.role === 'bot' && (
@@ -228,17 +232,15 @@ export default function Chatbot() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type or use mic..."
               disabled={isLoading}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-100"
+              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none disabled:bg-gray-100 transition-all"
+              style={{ '--tw-ring-color': PRIMARY_COLOR } as React.CSSProperties}
             />
             <button
               type="button"
               onClick={startListening}
               disabled={isLoading || isListening}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-2 ${
-                isListening
-                  ? 'bg-red-600 hover:bg-red-700 text-white'
-                  : 'bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white'
-              }`}
+              className="px-3 py-2 rounded-lg transition-colors flex items-center gap-2 text-white disabled:bg-gray-400"
+              style={{ backgroundColor: isListening ? '#ef4444' : PRIMARY_COLOR }}
               title="Click to speak"
             >
               <Mic className="w-4 h-4" />
@@ -246,7 +248,8 @@ export default function Chatbot() {
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              className="text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+              style={{ backgroundColor: PRIMARY_COLOR }}
             >
               <Send className="w-4 h-4" />
             </button>

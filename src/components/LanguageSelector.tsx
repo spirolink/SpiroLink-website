@@ -53,11 +53,25 @@ export function LanguageSelector() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-2 rounded items-center gap-1"
+        className="hidden md:flex text-gray-700 text-sm font-semibold hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-2 rounded items-center gap-1 hover:bg-gray-100"
         aria-label={`${t('language')}: ${currentLanguageName}`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H19a2 2 0 012 2v2m-6.468 9l2.34-7.021a1 1 0 00-.928-1.479H6.432a1 1 0 00-.928 1.479l2.34 7.021M7 20h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v9a2 2 0 002 2z"
+          />
+        </svg>
         {currentLanguageName}
         <svg
           className={`w-3 h-3 transition-transform duration-300 ${
@@ -81,7 +95,7 @@ export function LanguageSelector() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-40"
+          className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-xl z-40"
           role="listbox"
         >
           <ul>
@@ -89,10 +103,10 @@ export function LanguageSelector() {
               <li key={lang.code}>
                 <button
                   onClick={() => handleLanguageSelect(lang.code)}
-                  className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-800 transition-colors ${
+                  className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-100 transition-colors ${
                     language === lang.code
-                      ? 'bg-blue-600 text-white font-semibold'
-                      : 'text-gray-200'
+                      ? 'bg-blue-50 text-blue-700 font-semibold'
+                      : 'text-gray-700'
                   }`}
                   role="option"
                   aria-selected={language === lang.code}

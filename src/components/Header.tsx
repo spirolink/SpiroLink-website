@@ -112,9 +112,7 @@ export function Header() {
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
-          scrolled ? 'bg-black/92 backdrop-blur-sm' : 'bg-[#0b0b0b] backdrop-blur'
-        }`}
+        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 bg-white border-b border-gray-200`}
         role="banner"
       >
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
@@ -122,7 +120,7 @@ export function Header() {
           <div className="flex items-center flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded px-0 py-1"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded px-0 py-1"
               aria-label="SPIROLINK Home"
             >
               <img 
@@ -130,7 +128,7 @@ export function Header() {
                 alt="SPIROLINK" 
                 className="h-10 w-auto"
               />
-              <span className="text-xl font-semibold text-white whitespace-nowrap">
+              <span className="text-xl font-semibold text-gray-900 whitespace-nowrap">
                 SPIROLINK
               </span>
             </Link>
@@ -151,7 +149,7 @@ export function Header() {
                     <button
                       onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)}
                       onKeyDown={(e) => (handleMenuItemClick(e, item.label), handleMenuItemKeyDown(e, item.label))}
-                      className={`navItem relative text-white text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-gray-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 flex items-center gap-1 ${
+                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 flex items-center gap-1 ${
                         styles.navItem
                       }`}
                       aria-expanded={activeMenu === item.label}
@@ -179,7 +177,7 @@ export function Header() {
                   ) : (
                     <Link
                       to={item.href}
-                      className={`navItem relative text-white text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-gray-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 flex items-center gap-1 block ${
+                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 flex items-center gap-1 block ${
                         styles.navItem
                       }`}
                     >
@@ -223,12 +221,12 @@ export function Header() {
                   <div className="hidden md:flex items-center gap-3">
                     <Link
                       to="/dashboard"
-                      className="text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                      className="text-gray-700 text-sm font-medium hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-gray-100"
                       aria-label="Go to Dashboard"
                     >
                       Dashboard
                     </Link>
-                    <span className="text-white text-sm font-medium truncate max-w-[150px]">
+                    <span className="text-gray-700 text-sm font-medium truncate max-w-[150px]">
                       {user.email}
                     </span>
                     <button
@@ -236,7 +234,7 @@ export function Header() {
                         await logout();
                         navigate('/');
                       }}
-                      className="text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                      className="text-gray-700 text-sm font-medium hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-gray-100"
                       aria-label={t('signOut') || 'Sign Out'}
                     >
                       {t('signOut') || 'Sign Out'}
@@ -245,7 +243,7 @@ export function Header() {
                 ) : (
                   <button
                     onClick={() => navigate('/signin')}
-                    className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                    className="hidden md:flex text-gray-700 text-sm font-medium hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-gray-100"
                     aria-label={t('signIn')}
                   >
                     {t('signIn')}
@@ -258,23 +256,23 @@ export function Header() {
             <button
               ref={menuButtonRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden flex flex-col gap-1.5 text-white hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 p-2"
+              className="md:hidden flex flex-col gap-1.5 text-gray-700 hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 p-2"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
             >
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
                   mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
                   mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
                 }`}
               />

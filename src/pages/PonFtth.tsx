@@ -216,7 +216,7 @@ export default function PonFtth() {
             Contact us today for network planning, technology selection, detailed design, feasibility analysis, and full implementation support for your PON and FTTH initiative.
           </p>
           <Link to="/contact">
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+            <Button className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
               Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

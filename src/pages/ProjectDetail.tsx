@@ -69,12 +69,12 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-40 min-h-screen relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-sky-500/10 pointer-events-none" />
         <div className="text-center relative z-10">
           <h1 className="text-6xl font-bold text-white mb-4">Project Not Found</h1>
           <p className="text-slate-300 mb-6">The project you're looking for doesn't exist.</p>
           <Link to="/projects">
-            <Button className="bg-green-600 hover:bg-green-700 text-white">Back to Projects</Button>
+            <Button className="bg-sky-500 hover:bg-sky-600 text-white">Back to Projects</Button>
           </Link>
         </div>
       </Section>
@@ -84,13 +84,13 @@ export default function ProjectDetail() {
   return (
     <>
       <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-sky-500/10 pointer-events-none" />
         <div className="relative z-10">
-          <Link to="/projects" className="flex items-center gap-2 text-green-400 hover:text-green-300 mb-6 font-medium">
+          <Link to="/projects" className="flex items-center gap-2 text-sky-400 hover:text-sky-300 mb-6 font-medium">
             <ArrowLeft className="w-5 h-5" />
             Back to Projects
           </Link>
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-green-300 via-blue-300 to-green-300 bg-clip-text text-transparent">{project.title}</h1>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">{project.title}</h1>
           {project.image_url && (
             <img
               src={project.image_url}
@@ -134,7 +134,7 @@ export default function ProjectDetail() {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="bg-green-100 text-green-700 px-3 py-1 rounded text-sm font-medium"
+                          className="bg-sky-100 text-sky-700 px-3 py-1 rounded text-sm font-medium"
                         >
                           {tech}
                         </span>

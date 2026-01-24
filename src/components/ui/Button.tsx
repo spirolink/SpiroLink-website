@@ -16,14 +16,14 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'font-semibold rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl active:scale-95';
+    'font-semibold rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 hover:shadow-lg active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2';
 
   const variantStyles = {
     primary:
-      'bg-green-600 text-white hover:bg-green-700 active:scale-95 shadow-md hover:shadow-lg',
+      'bg-sky-500 text-white hover:bg-sky-600 focus-visible:outline-sky-500 shadow-md',
     secondary:
-      'bg-slate-600 text-white hover:bg-slate-700 active:scale-95 shadow-md hover:shadow-lg',
-    outline: 'border-2 border-green-600 text-green-600 hover:bg-green-50',
+      'bg-slate-600 text-white hover:bg-slate-700 focus-visible:outline-slate-500 shadow-md',
+    outline: 'border-2 border-sky-500 text-sky-600 hover:bg-sky-50 focus-visible:outline-sky-500',
   };
 
   const sizeStyles = {

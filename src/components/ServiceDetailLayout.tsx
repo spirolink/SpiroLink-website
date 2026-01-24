@@ -109,7 +109,7 @@ export function ServiceCard({ icon, title, description, isDark = false }: { icon
 
   return (
     <div className="group relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 to-blue-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className={`relative p-6 bg-gradient-to-br ${bgGradient} rounded-xl border ${border} hover:shadow-lg transition-all duration-300 h-full flex flex-col`}>
         <div className="text-3xl mb-4">{icon}</div>
         <h3 className={`text-lg font-bold ${textColor} mb-3`}>{title}</h3>
@@ -121,7 +121,7 @@ export function ServiceCard({ icon, title, description, isDark = false }: { icon
 
 export function InfoCard({ icon, title, description }: { icon: ReactNode; title: string; description: string }) {
   return (
-    <div className="bg-white p-6 rounded-lg border-l-4 border-green-600">
+    <div className="bg-white p-6 rounded-lg border-l-4 border-sky-500">
       <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
       <p className="text-slate-700">{description}</p>
     </div>
@@ -130,7 +130,7 @@ export function InfoCard({ icon, title, description }: { icon: ReactNode; title:
 
 export function FeatureBox({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
+    <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 rounded-lg">
       <h4 className="text-xl font-bold text-slate-900 mb-4">{title}</h4>
       <ul className="space-y-2 text-slate-700">
         {items.map((item, idx) => (
@@ -143,13 +143,13 @@ export function FeatureBox({ title, items }: { title: string; items: string[] })
 
 export function CTA({ title, description }: { title: string; description: string }) {
   return (
-    <Section className="bg-gradient-to-r from-slate-900 via-green-900 to-slate-900 text-white py-40 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 pointer-events-none" />
+    <Section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-40 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-sky-500/10 pointer-events-none" />
       <div className="text-center max-w-4xl mx-auto relative z-10">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-green-300 via-blue-300 to-green-300 bg-clip-text text-transparent">
+        <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">
           {title}
         </h2>
-        <p className="text-xl md:text-2xl mb-12 text-green-100 leading-relaxed">
+        <p className="text-xl md:text-2xl mb-12 text-sky-100 leading-relaxed">
           {description}
         </p>
       </div>

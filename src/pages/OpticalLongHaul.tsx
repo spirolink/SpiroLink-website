@@ -321,7 +321,7 @@ export default function OpticalLongHaul() {
             Contact us today for network planning, feasibility studies, system design, regulatory support, and full implementation services for your long-haul optical network.
           </p>
           <Link to="/contact">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+            <Button className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
               Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
