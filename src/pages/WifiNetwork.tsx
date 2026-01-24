@@ -13,7 +13,7 @@ export default function WifiNetwork() {
         description="Professional wireless network planning delivering predictable performance, scalability, and operational reliability for organizations of all sizes"
         badge="Enterprise Wi-Fi Infrastructure"
         badgeIcon="📶"
-        themeColor="purple"
+        themeColor="cyan"
       />
 
       <Section className="bg-white relative py-16">
@@ -36,7 +36,7 @@ export default function WifiNetwork() {
         </div>
       </Section>
 
-      <ServiceSection title="Core Services" subtitle="Technical Expertise" isDark={false} themeColor="purple">
+      <ServiceSection title="Core Services" subtitle="Technical Expertise" isDark={false} themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <ServiceCard 
             icon="📡"
@@ -65,17 +65,17 @@ export default function WifiNetwork() {
         <div className="mt-12 overflow-hidden">
           <div className="flex gap-6 slide-left-right">
             {[
-              { title: "Corporate & Enterprise", desc: "Headquarters, regional offices, multi-floor buildings, open office layouts, and distributed campus environments supporting BYOD.", color: "from-purple-50 to-indigo-50", border: "border-purple-200" },
-              { title: "Healthcare Facilities", desc: "Hospitals, medical centers, clinics, and medical campuses supporting clinical applications, medical devices, and RTLS systems.", color: "from-rose-50 to-pink-50", border: "border-rose-200" },
-              { title: "Education Institutions", desc: "K-12 schools, colleges, universities, libraries, and research facilities enabling digital learning and 1:1 device programs.", color: "from-blue-50 to-purple-50", border: "border-blue-200" },
-              { title: "Hospitality & Tourism", desc: "Hotels, resorts, casinos, theme parks, and restaurants delivering seamless guest experiences and operational efficiency.", color: "from-amber-50 to-orange-50", border: "border-amber-200" },
-              { title: "Retail & Commercial", desc: "Retail stores, shopping malls, restaurants, and commercial buildings supporting point-of-sale and customer engagement.", color: "from-lime-50 to-green-50", border: "border-lime-200" },
+              { title: "Corporate & Enterprise", desc: "Headquarters, regional offices, multi-floor buildings, open office layouts, and distributed campus environments supporting BYOD.", color: "from-cyan-50 to-blue-50", border: "border-cyan-200" },
+              { title: "Healthcare Facilities", desc: "Hospitals, medical centers, clinics, and medical campuses supporting clinical applications, medical devices, and RTLS systems.", color: "from-blue-50 to-sky-50", border: "border-blue-200" },
+              { title: "Education Institutions", desc: "K-12 schools, colleges, universities, libraries, and research facilities enabling digital learning and 1:1 device programs.", color: "from-sky-50 to-cyan-50", border: "border-sky-200" },
+              { title: "Hospitality & Tourism", desc: "Hotels, resorts, casinos, theme parks, and restaurants delivering seamless guest experiences and operational efficiency.", color: "from-cyan-50 to-indigo-50", border: "border-cyan-200" },
+              { title: "Retail & Commercial", desc: "Retail stores, shopping malls, restaurants, and commercial buildings supporting point-of-sale and customer engagement.", color: "from-indigo-50 to-blue-50", border: "border-indigo-200" },
               { title: "Manufacturing & Warehousing", desc: "Factories, distribution centers, and logistics facilities supporting mobile devices, AGVs, and industrial IoT systems.", color: "from-slate-100 to-slate-200", border: "border-slate-300" }
             ].map((item, idx) => (
               <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-lg border ${item.border} hover:border-purple-400/50 transition-all duration-300 card-glow`}>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">{item.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-lg border ${item.border} hover:border-cyan-400/50 transition-all duration-300 card-glow`}>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-cyan-700 transition-colors">{item.title}</h3>
                   <p className="text-slate-700 group-hover:text-slate-800 transition-colors">{item.desc}</p>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Why Choose Our Wi-Fi Planning Services" subtitle="What Sets Us Apart" isDark themeColor="purple">
+      <ServiceSection title="Why Choose Our Wi-Fi Planning Services" subtitle="What Sets Us Apart" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
             { title: 'RF Engineering Excellence', desc: 'Deep expertise in radio frequency design, propagation modeling, and interference mitigation' },
@@ -97,7 +97,7 @@ export default function WifiNetwork() {
             { title: 'Comprehensive Documentation', desc: 'Detailed deliverables enabling seamless implementation and management' },
           ].map((item, idx) => (
             <div key={idx} className="flex gap-4 bg-slate-800/50 p-4 rounded-lg">
-              <span className="text-purple-300 font-bold text-xl flex-shrink-0">✓</span>
+              <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>✓</span>
               <div>
                 <h4 className="font-semibold text-white">{item.title}</h4>
                 <p className="text-slate-300 text-sm">{item.desc}</p>
@@ -107,7 +107,7 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Our Design Approach" subtitle="Structured Process for Reliable Results" themeColor="purple">
+      <ServiceSection title="Our Design Approach" subtitle="Structured Process for Reliable Results" themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {[
             {
@@ -143,7 +143,7 @@ export default function WifiNetwork() {
           ].map((phase, idx) => (
             <div key={idx} className="bg-slate-50 p-6 rounded-lg">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold" style={{backgroundColor: '#0C94CE'}}>
                   {phase.step}
                 </div>
                 <div>
@@ -156,7 +156,7 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Technical Capabilities" subtitle="Advanced Wireless Engineering" isDark={false} themeColor="purple">
+      <ServiceSection title="Technical Capabilities" subtitle="Advanced Wireless Engineering" isDark={false} themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
             <h3 className="font-bold text-slate-900 mb-3">Wi-Fi Standards & Technologies</h3>
@@ -200,7 +200,7 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Design Deliverables" subtitle="Complete Documentation for Implementation" themeColor="purple">
+      <ServiceSection title="Design Deliverables" subtitle="Complete Documentation for Implementation" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-slate-50 p-6 rounded-lg">

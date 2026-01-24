@@ -256,7 +256,7 @@ export default function MicrowaveNetwork() {
             Contact us today for path analysis, link design, equipment recommendations, regulatory support, and full implementation services.
           </p>
           <Link to="/contact">
-            <Button className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+            <Button className="text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all" style={{backgroundColor: '#0C94CE'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}>
               Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

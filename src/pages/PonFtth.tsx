@@ -15,7 +15,7 @@ export default function PonFtth() {
         description="Comprehensive fiber-to-the-home and passive optical network design for broadband operators and service providers"
         badge="FTTH Network Planning"
         badgeIcon="🌐"
-        themeColor="green"
+        themeColor="cyan"
       />
 
       <Section className="bg-white relative py-20">
@@ -27,14 +27,14 @@ export default function PonFtth() {
         <div className="mt-12 overflow-hidden">
           <div className="flex gap-6 slide-left-right">
             {[
-              { title: "Geographic Assessment", desc: "Market analysis, demographic mapping, fiber availability evaluation, and service territory planning", icon: "📍", color: "from-emerald-50 to-teal-50", border: "border-emerald-200" },
-              { title: "Route Planning", desc: "Optimal fiber routes, utility coordination, environmental assessment, and cost optimization", icon: "🗺️", color: "from-cyan-50 to-blue-50", border: "border-cyan-200" },
-              { title: "Network Design", desc: "PON topology selection, splitter placement, service area segmentation, and capacity planning", icon: "📊", color: "from-green-50 to-emerald-50", border: "border-green-200" },
-              { title: "Economic Modeling", desc: "Investment analysis, ROI calculations, subsidy optimization, and financial feasibility studies", icon: "💰", color: "from-lime-50 to-green-50", border: "border-lime-200" }
+              { title: "Geographic Assessment", desc: "Market analysis, demographic mapping, fiber availability evaluation, and service territory planning", icon: "📍", color: "from-cyan-50 to-blue-50", border: "border-cyan-200" },
+              { title: "Route Planning", desc: "Optimal fiber routes, utility coordination, environmental assessment, and cost optimization", icon: "🗺️", color: "from-blue-50 to-indigo-50", border: "border-blue-200" },
+              { title: "Network Design", desc: "PON topology selection, splitter placement, service area segmentation, and capacity planning", icon: "📊", color: "from-sky-50 to-cyan-50", border: "border-sky-200" },
+              { title: "Economic Modeling", desc: "Investment analysis, ROI calculations, subsidy optimization, and financial feasibility studies", icon: "💰", color: "from-cyan-50 to-sky-50", border: "border-cyan-200" }
             ].map((item, idx) => (
               <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-xl border ${item.border} hover:border-green-400/50 transition-all duration-300 h-full flex flex-col card-glow`}>
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-xl border ${item.border} hover:border-cyan-400/50 transition-all duration-300 h-full flex flex-col card-glow`}>
                   <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed flex-grow">{item.desc}</p>
@@ -45,7 +45,7 @@ export default function PonFtth() {
         </div>
       </Section>
 
-      <ServiceSection title="PON Technology Design" subtitle="Passive Optical Network Engineering" isDark themeColor="green">
+      <ServiceSection title="PON Technology Design" subtitle="Passive Optical Network Engineering" isDark themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <ServiceCard icon="🔀" title="PON Architecture Selection" description="GPON vs EPON vs XGS-PON evaluation, split ratios, reach analysis, and upgrade pathways" isDark={true} />
           <ServiceCard icon="📡" title="Optical Distribution Network" description="ODN design, splitter placement, fiber segment planning, and performance optimization" isDark={true} />
@@ -63,7 +63,7 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Capacity & Coverage Planning" subtitle="Growth & Service Territory Design" isDark themeColor="green">
+      <ServiceSection title="Capacity & Coverage Planning" subtitle="Growth & Service Territory Design" isDark themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <ServiceCard icon="📈" title="Subscriber Growth" description="Demand forecasting, address density analysis, service adoption modeling, and capacity headroom planning" isDark={true} />
           <ServiceCard icon="🏘️" title="Service Territory Segmentation" description="Service area optimization, customer density zones, network segmentation, and multi-fiber strategies" isDark={true} />
@@ -81,46 +81,46 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Our Design Methodology" subtitle="Proven 6-Phase Approach" themeColor="green">
+      <ServiceSection title="Our Design Methodology" subtitle="Proven 6-Phase Approach" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>1</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Service Territory Analysis</h4>
                 <p className="text-slate-700">Comprehensive market assessment including demographics, address density, service demand, and economic opportunity identification.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>2</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Network Architecture Selection</h4>
                 <p className="text-slate-700">PON technology evaluation, topology design, fiber reach optimization, and infrastructure capacity planning for target market.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>3</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Detailed ODN Design</h4>
                 <p className="text-slate-700">Fiber routing engineering, splitter placement, distribution point design, and all ODN component specifications.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>4</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Feasibility & Economics</h4>
                 <p className="text-slate-700">Cost estimation, investment modeling, ROI analysis, grant opportunity identification, and financial sustainability assessment.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>5</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Staging & Implementation Planning</h4>
                 <p className="text-slate-700">Phased construction roadmap, deployment sequencing, timeline development, resource planning, and milestone definition.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">6</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>6</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Documentation & Support</h4>
                 <p className="text-slate-700">Complete technical specifications, vendor requirements, RFP support, implementation guidance, and commissioning oversight.</p>
@@ -130,7 +130,7 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="PON Technologies" subtitle="GPON, EPON, XGS-PON & Beyond" isDark={false} themeColor="green">
+      <ServiceSection title="PON Technologies" subtitle="GPON, EPON, XGS-PON & Beyond" isDark={false} themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <ServiceCard icon="🟢" title="GPON (10 Gbps)" description="ITU-T standard, 1.244/2.488 Gbps downstream, mature technology, widespread vendor ecosystem" isDark={false} />
           <ServiceCard icon="🔵" title="EPON (10 Gbps)" description="IEEE standard, 1.25 Gbps symmetric, Ethernet native, cost-effective deployment model" isDark={false} />
@@ -139,7 +139,7 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Network Capabilities" subtitle="Advanced Feature Support" isDark themeColor="green">
+      <ServiceSection title="Network Capabilities" subtitle="Advanced Feature Support" isDark themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
             <h3 className="font-bold text-slate-900 mb-3">Service Offerings</h3>
@@ -180,7 +180,7 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Industries & Use Cases" subtitle="Who We Serve" isDark themeColor="green">
+      <ServiceSection title="Industries & Use Cases" subtitle="Who We Serve" isDark themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
             <h3 className="font-bold text-slate-900 mb-2">Fiber-to-the-Home (FTTH)</h3>
@@ -216,7 +216,7 @@ export default function PonFtth() {
             Contact us today for network planning, technology selection, detailed design, feasibility analysis, and full implementation support for your PON and FTTH initiative.
           </p>
           <Link to="/contact">
-            <Button className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+            <Button className="text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all" style={{backgroundColor: '#0C94CE'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}>
               Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

@@ -15,7 +15,7 @@ export default function OpticalLongHaul() {
         description="Designing high-capacity, resilient fiber optic networks for carriers, enterprises, and global infrastructure"
         badge="Long-Haul Optical Infrastructure"
         badgeIcon="🌍"
-        themeColor="orange"
+        themeColor="cyan"
       />
 
       <Section className="bg-white relative py-16">
@@ -36,7 +36,7 @@ export default function OpticalLongHaul() {
 
       <ServiceSection title="Network Design Services" subtitle="Comprehensive Planning & Engineering">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">Route Planning & Feasibility</h3>
             <ul className="space-y-2 text-slate-700">
               <li>• Geographic route analysis</li>
@@ -45,7 +45,7 @@ export default function OpticalLongHaul() {
               <li>• Regulatory pathway identification</li>
             </ul>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">DWDM System Design</h3>
             <ul className="space-y-2 text-slate-700">
               <li>• Dense wavelength multiplexing</li>
@@ -54,7 +54,7 @@ export default function OpticalLongHaul() {
               <li>• Channel planning</li>
             </ul>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">Link Budget & Optimization</h3>
             <ul className="space-y-2 text-slate-700">
               <li>• Optical loss analysis</li>
@@ -63,7 +63,7 @@ export default function OpticalLongHaul() {
               <li>• Performance optimization</li>
             </ul>
           </div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">Resilience & Protection</h3>
             <ul className="space-y-2 text-slate-700">
               <li>• Redundancy architecture</li>
@@ -88,8 +88,8 @@ export default function OpticalLongHaul() {
                 { title: "Government & Military", desc: "Secure government networks, strategic communications infrastructure, critical infrastructure protection, and classified networks.", icon: "🛡️", color: "from-rose-50 to-red-50", border: "border-rose-200" }
               ].map((item, idx) => (
                 <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-xl border ${item.border} hover:border-orange-400/50 transition-all duration-300 h-full flex flex-col card-glow`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-xl border ${item.border} hover:border-cyan-400/50 transition-all duration-300 h-full flex flex-col card-glow`}>
                     <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
                     <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
                     <p className="text-sm text-slate-600 leading-relaxed flex-grow">{item.desc}</p>
@@ -101,46 +101,46 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Our Design Approach" subtitle="6-Phase Methodology" themeColor="orange">
+      <ServiceSection title="Our Design Approach" subtitle="6-Phase Methodology" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>1</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Requirements & Objectives Analysis</h4>
                 <p className="text-slate-700">Comprehensive assessment of capacity requirements, latency targets, availability needs, budget constraints, and future growth plans.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>2</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Route Selection & Feasibility</h4>
                 <p className="text-slate-700">Geographic analysis, terrain assessment, fiber availability evaluation, environmental considerations, and cost-benefit optimization.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>3</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Optical System Design</h4>
                 <p className="text-slate-700">DWDM configuration, transponder selection, regenerator placement, amplification strategy, and channel planning for terabit-scale capacity.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>4</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Link Budget & Performance Analysis</h4>
                 <p className="text-slate-700">Comprehensive link budget calculations, signal integrity analysis, noise figure assessment, and margin optimization across all wavelengths.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>5</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Resilience & Redundancy Design</h4>
                 <p className="text-slate-700">Protection switching architecture, mesh networking strategies, automatic recovery mechanisms, and disaster recovery procedures.</p>
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">6</div>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>6</div>
               <div>
                 <h4 className="text-xl font-bold text-slate-900 mb-2">Implementation & Support</h4>
                 <p className="text-slate-700">Detailed documentation, equipment specifications, site acquisition support, vendor selection, commissioning oversight, and ongoing optimization.</p>
@@ -150,7 +150,7 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Technical Capabilities" subtitle="Advanced Optical Engineering" isDark={false} themeColor="orange">
+      <ServiceSection title="Technical Capabilities" subtitle="Advanced Optical Engineering" isDark={false} themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
             <h3 className="font-bold text-slate-900 mb-3">Capacity & Distance</h3>
@@ -191,7 +191,7 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Network Types We Design" subtitle="Specialized Solutions" themeColor="orange">
+      <ServiceSection title="Network Types We Design" subtitle="Specialized Solutions" themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
             <h3 className="font-bold text-slate-900 mb-3">National Carrier Backbones</h3>
@@ -220,7 +220,7 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Key Design Considerations" subtitle="Critical Success Factors" isDark themeColor="orange">
+      <ServiceSection title="Key Design Considerations" subtitle="Critical Success Factors" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
             <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
@@ -253,7 +253,7 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Why Choose Our Optical Solutions" subtitle="What Sets Us Apart" themeColor="orange">
+      <ServiceSection title="Why Choose Our Optical Solutions" subtitle="What Sets Us Apart" themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           <div className="flex gap-4 items-start">
             <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
@@ -298,14 +298,14 @@ export default function OpticalLongHaul() {
             </div>
           </div>
           <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>→</span>
             <div>
               <h4 className="font-semibold text-slate-900">Ongoing Support & Optimization</h4>
               <p className="text-slate-700 text-sm">Deployment oversight, commissioning support, and post-launch optimization ensuring network achieves designed performance and reliability.</p>
             </div>
           </div>
           <div className="flex gap-4 items-start">
-            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>→</span>
             <div>
               <h4 className="font-semibold text-slate-900">Vendor-Neutral Approach</h4>
               <p className="text-slate-700 text-sm">Objective equipment recommendations and system architecture independent of vendor relationships, ensuring best value for your investment.</p>
@@ -321,7 +321,7 @@ export default function OpticalLongHaul() {
             Contact us today for network planning, feasibility studies, system design, regulatory support, and full implementation services for your long-haul optical network.
           </p>
           <Link to="/contact">
-            <Button className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+            <Button className="text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all" style={{backgroundColor: '#0C94CE'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}>
               Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
