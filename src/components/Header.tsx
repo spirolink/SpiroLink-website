@@ -126,11 +126,8 @@ export function Header() {
               <img 
                 src="/assets/downloads/logo.png" 
                 alt="SPIROLINK" 
-                className="h-10 w-auto"
+                className="h-14 w-auto object-contain"
               />
-              <span className="text-xl font-semibold text-gray-900 whitespace-nowrap">
-                SPIROLINK
-              </span>
             </Link>
           </div>
 
