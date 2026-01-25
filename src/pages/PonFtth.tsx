@@ -1,5 +1,5 @@
 import { Section, SectionHeading } from '../components/ui/Section';
-import { ServiceHero, ServiceSection, ServiceCard, CTA } from '../components/ServiceDetailLayout';
+import { ServiceHero, ServiceSection } from '../components/ServiceDetailLayout';
 
 const rotate3dClasses = ['rotate-3d-1', 'rotate-3d-2', 'rotate-3d-3', 'rotate-3d-4', 'rotate-3d-5'];
 const getRotateClass = (idx: number) => rotate3dClasses[idx % rotate3dClasses.length];
@@ -176,19 +176,52 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <Section className="bg-white relative py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready for Your FTTH Network?</h2>
-          <p className="text-lg text-slate-600 mb-8">
-            Contact us today for network planning, technology selection, detailed design, feasibility analysis, and full implementation support for your PON and FTTH initiative.
-      <ServiceSection title="Get Clarity on Your FTTH Plan Before You Build" subtitle="Thinking-First Approach" isDark={false} themeColor="cyan">
-        <div className="max-w-3xl mx-auto mt-8">
-          <p className="text-slate-700 text-lg leading-relaxed mb-6">
-            FTTH networks are long-lived infrastructure, and early design decisions—split ratios, feeder fiber counts, technology migration paths—determine long-term performance and cost.
-          </p>
-          <p className="text-slate-700 text-lg leading-relaxed">
-            Before finalizing your access network strategy, it helps to validate capacity assumptions, upgrade paths, and signal margin expectations with an experienced optical & PON planning perspective.
-          </p>
+      <ServiceSection title="Our Design Methodology" subtitle="Proven 6-Phase Approach" themeColor="cyan">
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-6">
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>1</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Service Territory Analysis</h4>
+                <p className="text-slate-700">Comprehensive market assessment including demographics, address density, service demand, and economic opportunity identification.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>2</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Network Architecture Selection</h4>
+                <p className="text-slate-700">PON technology evaluation, topology design, fiber reach optimization, and infrastructure capacity planning for target market.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>3</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Detailed ODN Design</h4>
+                <p className="text-slate-700">Fiber routing engineering, splitter placement, distribution point design, and all ODN component specifications.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>4</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Feasibility & Economics</h4>
+                <p className="text-slate-700">Cost estimation, investment modeling, ROI analysis, grant opportunity identification, and financial sustainability assessment.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>5</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Staging & Implementation Planning</h4>
+                <p className="text-slate-700">Phased construction roadmap, deployment sequencing, timeline development, resource planning, and milestone definition.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{backgroundColor: '#0C94CE'}}>6</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Documentation & Support</h4>
+                <p className="text-slate-700">Complete technical specifications, vendor requirements, RFP support, implementation guidance, and commissioning oversight.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </ServiceSection>
 
@@ -224,11 +257,6 @@ export default function PonFtth() {
           </div>
         </div>
       </ServiceSection>
-
-      <CTA
-        title="Discuss Your FTTH Design Challenges"
-        description="Review an existing or planned FTTH network, or discuss your access network strategy with our team"
-      />
     </>
   );
 }
