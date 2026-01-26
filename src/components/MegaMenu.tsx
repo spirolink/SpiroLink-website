@@ -34,6 +34,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ itemLabel, isOpen }) => {
       description: 'Wireless infrastructure planning',
       href: '/wifi-network',
     },
+    {
+      title: 'Remote Property Connectivity Solutions',
+      description: 'Enterprise-grade connectivity for remote properties',
+      href: '/remote-property-connectivity',
+    },
   ];
 
   return (

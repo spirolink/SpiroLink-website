@@ -16,6 +16,7 @@ export function CountrySelector() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const hoverTimeoutRef = useRef<NodeJS.Timeout>();
 
   const selectedCountryName = COUNTRIES.find(c => c.code === selectedCountry)?.name || 'India';
 
@@ -24,18 +25,24 @@ export function CountrySelector() {
     const detectLocation = async () => {
       setIsLoadingLocation(true);
       try {
-        // Check if user has already set a preference
         const storedCountry = localStorage.getItem(COUNTRY_STORAGE_KEY);
-        if (!storedCountry) {
-          // No stored preference, try to detect location
-          const detectedCountry = await detectUserCountry();
-          if (detectedCountry && COUNTRIES.find(c => c.code === detectedCountry)) {
+        
+        // Always try to detect location, but prefer stored if available
+        const detectedCountry = await detectUserCountry();
+        
+        if (detectedCountry && COUNTRIES.find(c => c.code === detectedCountry)) {
+          // If no stored preference, or detection works, use detected country
+          if (!storedCountry) {
             setSelectedCountry(detectedCountry);
             localStorage.setItem(COUNTRY_STORAGE_KEY, detectedCountry);
+            console.log('Auto-detected country:', detectedCountry);
           }
+        } else if (!storedCountry) {
+          // Detection failed and no stored preference, keep default 'IN'
+          console.log('Country detection failed, using default: IN');
         }
       } catch (error) {
-        console.warn('Location detection failed:', error);
+        console.warn('Location detection error:', error);
       } finally {
         setIsLoadingLocation(false);
       }
@@ -60,6 +67,21 @@ export function CountrySelector() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Handle mouse enter (hover)
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsOpen(true);
+  };
+
+  // Handle mouse leave (hover out)
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 200); // Small delay to allow mouse movement to dropdown
+  };
 
   // Focus search input when dropdown opens
   useEffect(() => {
@@ -96,7 +118,11 @@ export function CountrySelector() {
   );
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
@@ -128,8 +154,10 @@ export function CountrySelector() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-xl z-40"
+          className="absolute right-0 mt-0 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-40 top-full"
           role="listbox"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {/* Search Input */}
           <div className="p-3 border-b border-gray-300">

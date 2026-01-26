@@ -6,6 +6,7 @@ export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout>();
 
   const currentLanguageName = SUPPORTED_LANGUAGES.find(
     (lang) => lang.code === language
@@ -28,6 +29,21 @@ export function LanguageSelector() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Handle mouse enter (hover)
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsOpen(true);
+  };
+
+  // Handle mouse leave (hover out)
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 200); // Small delay to allow mouse movement to dropdown
+  };
+
   // Handle keyboard navigation
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -49,7 +65,11 @@ export function LanguageSelector() {
   };
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
@@ -95,8 +115,10 @@ export function LanguageSelector() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-xl z-40"
+          className="absolute right-0 mt-0 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-40 top-full"
           role="listbox"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <ul>
             {SUPPORTED_LANGUAGES.map((lang) => (
