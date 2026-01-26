@@ -43,24 +43,24 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0b0b0b] py-12 px-4 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-md w-full space-y-8 relative z-10">
         {/* Logo/Brand */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">SPIROLINK</h1>
-          <p className="text-slate-400 text-sm">Connectivity at the Speed of Light</p>
+          <h1 className="text-4xl font-bold text-sky-600 mb-2">SPIROLINK</h1>
+          <p className="text-slate-600 text-sm">Connectivity at the Speed of Light</p>
         </div>
 
         {/* Heading */}
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+          <h2 className="mt-6 text-center text-3xl font-bold text-slate-900">
             Create your account
           </h2>
-          <p className="mt-2 text-center text-sm text-slate-400">
+          <p className="mt-2 text-center text-sm text-slate-600">
             Or{" "}
             <Link
               to="/signin"
-              className="font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+              className="font-semibold text-sky-600 hover:text-sky-700 transition-colors"
             >
               sign in to your account
             </Link>
@@ -70,13 +70,13 @@ const SignUp: React.FC = () => {
         {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSignUp}>
           {error && (
-            <div className="rounded-lg bg-red-900/30 border border-red-700/50 p-4">
-              <p className="text-sm font-medium text-red-300">{error}</p>
+            <div className="rounded-lg bg-red-50 border border-red-200 p-4">
+              <p className="text-sm font-medium text-red-700">{error}</p>
             </div>
           )}
 
-          <div className="rounded-lg border border-slate-700 bg-slate-900/50 overflow-hidden focus-within:border-cyan-400/50 transition-colors">
-            <div className="border-b border-slate-700">
+          <div className="rounded-lg border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div className="border-b border-slate-100">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -88,11 +88,11 @@ const SignUp: React.FC = () => {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-transparent text-white placeholder-slate-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
               />
             </div>
 
-            <div className="border-b border-slate-700">
+            <div className="border-b border-slate-100">
               <label htmlFor="password" className="sr-only">
                 Password
               </label>
@@ -104,7 +104,7 @@ const SignUp: React.FC = () => {
                 placeholder="Password (min. 6 characters)"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-transparent text-white placeholder-slate-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
               />
             </div>
 
@@ -120,7 +120,7 @@ const SignUp: React.FC = () => {
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-transparent text-white placeholder-slate-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
               />
             </div>
           </div>
@@ -129,16 +129,16 @@ const SignUp: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-cyan-500/25"
+            className="w-full py-3 px-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg active:scale-95"
           >
             {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
 
         {/* Password Requirements */}
-        <div className="bg-slate-900/50 border border-slate-700 p-4 rounded-lg">
-          <p className="text-xs text-slate-400">
-            <strong className="text-slate-300">Password Requirements:</strong>
+        <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm">
+          <p className="text-xs text-slate-600">
+            <strong className="text-slate-700">Password Requirements:</strong>
             <br />• Minimum 6 characters
             <br />• Must match in both fields
           </p>
