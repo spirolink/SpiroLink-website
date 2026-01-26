@@ -12,26 +12,55 @@ export interface GeolocationData {
 
 /**
  * Get user's country from their IP address
- * Uses a free IP geolocation API
+ * Uses multiple geolocation APIs with fallbacks
  */
 export async function getUserCountry(): Promise<string | null> {
-  try {
-    // Try using the IP geolocation API (free tier)
-    const response = await fetch('https://ipapi.co/json/');
-    
-    if (!response.ok) {
-      console.warn('Geolocation API failed');
-      return null;
+  // Try multiple APIs in order of reliability
+  const apis = [
+    {
+      name: 'ipapi.co',
+      url: 'https://ipapi.co/json/',
+      extractCountry: (data: any) => data.country_code
+    },
+    {
+      name: 'ip-api.com',
+      url: 'https://ip-api.com/json/',
+      extractCountry: (data: any) => data.countryCode
+    },
+    {
+      name: 'ipwhois.io',
+      url: 'https://ipwho.is/',
+      extractCountry: (data: any) => data.country_code
     }
+  ];
 
-    const data = await response.json();
-    
-    // Return the country code (e.g., 'IN', 'US', 'FR')
-    return data.country_code || null;
-  } catch (error) {
-    console.warn('Failed to fetch geolocation data:', error);
-    return null;
+  for (const api of apis) {
+    try {
+      console.log(`Trying geolocation with ${api.name}...`);
+      const response = await fetch(api.url, { 
+        signal: AbortSignal.timeout(5000) 
+      });
+      
+      if (!response.ok) {
+        console.log(`${api.name} failed with status ${response.status}`);
+        continue;
+      }
+
+      const data = await response.json();
+      const countryCode = api.extractCountry(data);
+      
+      if (countryCode) {
+        console.log(`Successfully detected country: ${countryCode} via ${api.name}`);
+        return countryCode;
+      }
+    } catch (error) {
+      console.log(`${api.name} error:`, error);
+      continue;
+    }
   }
+
+  console.warn('All geolocation APIs failed');
+  return null;
 }
 
 /**

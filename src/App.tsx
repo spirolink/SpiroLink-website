@@ -12,6 +12,7 @@ import PonFtth from './pages/PonFtth';
 import MicrowaveNetwork from './pages/MicrowaveNetwork';
 import OpticalLongHaul from './pages/OpticalLongHaul';
 import WifiNetwork from './pages/WifiNetwork';
+import RemotePropertyConnectivity from './pages/RemotePropertyConnectivity';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
@@ -62,6 +63,7 @@ export default function App() {
                 <Route path="/microwave-network" element={<MicrowaveNetwork />} />
                 <Route path="/optical-long-haul" element={<OpticalLongHaul />} />
                 <Route path="/wifi-network" element={<WifiNetwork />} />
+                <Route path="/remote-property-connectivity" element={<RemotePropertyConnectivity />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy" element={<Privacy />} />
