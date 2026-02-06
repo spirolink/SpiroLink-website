@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
@@ -39,14 +40,36 @@ if (process.env.OPENAI_API_KEY) {
 }
 
 /* ===============================
-   EMAIL (RESEND API)
+   EMAIL CONFIGURATION (RESEND or SMTP)
 ================================ */
 let resend = null;
+let smtpTransporter = null;
+let emailService = null;
+
+// Option 1: RESEND
 if (process.env.RESEND_API_KEY) {
   resend = new Resend(process.env.RESEND_API_KEY);
+  emailService = 'resend';
   console.log('✅ Resend email service initialized');
-} else {
-  console.warn('⚠️  RESEND_API_KEY not configured - email disabled');
+}
+
+// Option 2: SMTP (Gmail or other)
+if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+  smtpTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || '587'),
+    secure: process.env.SMTP_SECURE === 'true' || false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+  emailService = 'smtp';
+  console.log(`✅ SMTP email service initialized (${process.env.SMTP_HOST})`);
+}
+
+if (!emailService) {
+  console.warn('⚠️  No email service configured - email disabled');
 }
 
 /* ===============================
@@ -60,7 +83,7 @@ app.get('/api/health', (req, res) => {
     service: 'SPIROLINK',
     environment: process.env.NODE_ENV || 'development',
     openaiConfigured: !!process.env.OPENAI_API_KEY,
-    emailConfigured: !!process.env.RESEND_API_KEY,
+    emailService: emailService || 'not configured',
   });
 });
 
@@ -119,7 +142,7 @@ app.post('/api/chat', async (req, res) => {
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
   try {
-    if (!resend) {
+    if (!emailService) {
       return res.status(503).json({
         success: false,
         error: 'Email service not configured',
@@ -137,41 +160,65 @@ app.post('/api/contact', async (req, res) => {
 
     console.log(`📧 Processing contact form from ${email}...`);
 
-    // Email to company
-    const companyEmailResponse = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'contact@spirolink.com',
-      subject: `New Contact Form - ${serviceType || 'General'}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Service:</strong> ${serviceType || 'N/A'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-        <hr>
-        <p><em>Reply to: ${email}</em></p>
-      `,
-    });
+    const emailSubject = `New Contact Form - ${serviceType || 'General'}`;
+    const companyEmailHtml = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+      <p><strong>Service:</strong> ${serviceType || 'N/A'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+      <hr>
+      <p><em>Reply to: ${email}</em></p>
+    `;
 
-    console.log('✅ Company email sent');
+    const userEmailHtml = `
+      <h3>Hello ${name},</h3>
+      <p>Thank you for contacting SPIROLINK.</p>
+      <p>We have received your message and will get back to you shortly.</p>
+      <br>
+      <p>Regards,<br>SPIROLINK Team</p>
+    `;
 
-    // Confirmation email to user
-    const userEmailResponse = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: email,
-      subject: 'We received your message - SPIROLINK',
-      html: `
-        <h3>Hello ${name},</h3>
-        <p>Thank you for contacting SPIROLINK.</p>
-        <p>We have received your message and will get back to you shortly.</p>
-        <br>
-        <p>Regards,<br>SPIROLINK Team</p>
-      `,
-    });
+    // Send via appropriate service
+    if (emailService === 'resend') {
+      // Company email via Resend
+      await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: 'contact@spirolink.com',
+        subject: emailSubject,
+        html: companyEmailHtml,
+      });
+      console.log('✅ Company email sent via Resend');
 
-    console.log('✅ Confirmation email sent to user');
+      // Confirmation to user via Resend
+      await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: email,
+        subject: 'We received your message - SPIROLINK',
+        html: userEmailHtml,
+      });
+      console.log('✅ User confirmation sent via Resend');
+    } else if (emailService === 'smtp') {
+      // Company email via SMTP
+      await smtpTransporter.sendMail({
+        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+        to: 'contact@spirolink.com',
+        subject: emailSubject,
+        html: companyEmailHtml,
+      });
+      console.log('✅ Company email sent via SMTP');
+
+      // Confirmation to user via SMTP
+      await smtpTransporter.sendMail({
+        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+        to: email,
+        subject: 'We received your message - SPIROLINK',
+        html: userEmailHtml,
+      });
+      console.log('✅ User confirmation sent via SMTP');
+    }
 
     res.json({
       success: true,
