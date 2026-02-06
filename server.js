@@ -191,7 +191,7 @@ app.post('/api/contact', async (req, res) => {
    Send index.html for non-API routes
    (React Router handles client-side routing)
 ================================ */
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   const indexPath = join(frontendDistPath, 'index.html');
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
