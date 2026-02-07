@@ -7,6 +7,7 @@ import nodemailer from "nodemailer";
 import Razorpay from "razorpay";
 import Stripe from "stripe";
 import crypto from "crypto";
+import { initializeDatabase } from "./config/initDb.js";
 
 dotenv.config();
 
@@ -116,6 +117,31 @@ app.get("/api/health", (req, res) => {
     emailConfigured: !!emailService,
     openaiConfigured: !!process.env.OPENAI_API_KEY,
   });
+});
+
+/* ===============================
+   DATABASE TEST ENDPOINT
+================================ */
+app.get("/api/test-db", async (req, res) => {
+  try {
+    // Import the database connection
+    const pool = (await import('./config/db.js')).default;
+    
+    const result = await pool.query("SELECT NOW()");
+    res.json({
+      success: true,
+      message: "✅ PostgreSQL connected successfully",
+      timestamp: result.rows[0]?.now,
+      data: result.rows[0]
+    });
+  } catch (error) {
+    console.error("❌ Database error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Database connection failed",
+      details: error.message
+    });
+  }
 });
 
 /* ===============================
@@ -662,10 +688,19 @@ app.use((req, res) => {
 /* ===============================
    START SERVER
 ================================ */
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log("====================================");
   console.log("🚀 SPIROLINK Backend Running");
   console.log("🌍 Port: " + PORT);
+  
+  // Initialize database
+  try {
+    await initializeDatabase();
+    console.log("✅ Database initialized");
+  } catch (err) {
+    console.error("❌ Database initialization error:", err.message);
+  }
+  
   console.log("📍 API Endpoints:");
   console.log("  GET  /api/health");
   console.log("  POST /api/chat");
