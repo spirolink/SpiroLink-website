@@ -12,6 +12,13 @@ import { initializeDatabase } from './chatbot-backend/config/initDb.js';
 
 dotenv.config();
 
+// Ensure DATABASE_URL is set for PostgreSQL connection
+if (!process.env.DATABASE_URL) {
+  // Fallback to internal Render PostgreSQL URL if not set
+  process.env.DATABASE_URL = 'postgresql://spiro_postgres_user:wzKR5jnH7o8kc8oF91qnrH7duL4DbwN9@dpg-d63ddma4d50c73dk98kg-a.c.render-internal.com:5432/spiro_postgres';
+  console.log('⚠️  DATABASE_URL not found in environment, using default Render PostgreSQL URL');
+}
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
