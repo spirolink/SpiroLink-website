@@ -1,22 +1,29 @@
 import React, { useState } from "react";
-import { signUp } from "../lib/auth";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     // Validation
-    if (!email || !password) {
-      setError("Please fill in all fields");
+    if (!email || !password || !username) {
+      setError("Please fill in all required fields");
       return;
     }
 
@@ -33,7 +40,16 @@ const SignUp: React.FC = () => {
     setLoading(true);
 
     try {
-      await signUp(email, password);
+      await signup({
+        email,
+        username,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+        phone,
+        country,
+        company_name: companyName
+      });
       navigate("/");
     } catch (error: any) {
       setError(error.message || "Failed to create account");
@@ -88,6 +104,98 @@ const SignUp: React.FC = () => {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="username" className="sr-only">
+                Username
+              </label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="first-name" className="sr-only">
+                First Name
+              </label>
+              <input
+                id="first-name"
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="last-name" className="sr-only">
+                Last Name
+              </label>
+              <input
+                id="last-name"
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="company-name" className="sr-only">
+                Company Name
+              </label>
+              <input
+                id="company-name"
+                name="companyName"
+                type="text"
+                placeholder="Company Name"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="phone" className="sr-only">
+                Phone
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="Phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
+              />
+            </div>
+
+            <div className="border-b border-slate-100">
+              <label htmlFor="country" className="sr-only">
+                Country
+              </label>
+              <input
+                id="country"
+                name="country"
+                type="text"
+                autoComplete="country-name"
+                placeholder="Country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
                 className="w-full px-4 py-3 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-inset"
               />
             </div>

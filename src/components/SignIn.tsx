@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signIn } from "../lib/auth";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
 const SignIn: React.FC = () => {
@@ -8,6 +8,7 @@ const SignIn: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ const SignIn: React.FC = () => {
     setLoading(true);
 
     try {
-      await signIn(email, password);
+      await login(email, password);
       navigate("/");
     } catch (error: any) {
       setError(error.message || "Failed to sign in");

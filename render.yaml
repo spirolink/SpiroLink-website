@@ -1,5 +1,23 @@
 services:
   - type: web
+    name: spirolink-backend
+    env: node
+    rootDir: ./chatbot-backend
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5001
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+
+  - type: web
     name: spirolink-frontend
     env: node
     rootDir: ./
@@ -8,3 +26,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: VITE_API_URL
+        value: https://spirolink-backend.onrender.com
