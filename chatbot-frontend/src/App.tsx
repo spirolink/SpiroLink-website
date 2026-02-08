@@ -4,6 +4,7 @@ import { useAuth } from './contexts/AuthContext';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Dashboard from './pages/Dashboard';
+import Payment from './pages/Payment';
 import { Chatbot } from './components/Chatbot';
 
 // Protected Route Component
@@ -109,6 +110,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/payment" element={<Payment />} />
         <Route
           path="/dashboard"
           element={
