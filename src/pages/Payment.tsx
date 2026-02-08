@@ -10,7 +10,6 @@ export default function Payment() {
   const [success, setSuccess] = useState(false);
   const [transactionId, setTransactionId] = useState('');
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'pending' | 'processing' | 'succeeded' | 'failed'>('idle');
-  const [paymentId, setPaymentId] = useState('');
   const statusCheckIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const services = [
@@ -41,6 +40,13 @@ export default function Payment() {
       try {
         const response = await fetch(`/api/payment/status/${pId}`);
         if (response.ok) {
+          const contentType = response.headers.get('content-type') || '';
+          if (!contentType.includes('application/json')) {
+            const text = await response.text();
+            console.warn('Non-JSON status response:', text.slice(0, 200));
+            return;
+          }
+
           const data = await response.json();
           setPaymentStatus(data.status || 'pending');
           
@@ -80,7 +86,7 @@ export default function Payment() {
 
   const handleStripePayment = async () => {
     try {
-      if (amount < 1) {
+      if (typeof amount !== 'number' || amount < 1) {
         setError('Minimum amount is $1');
         setLoading(false);
         return;
@@ -109,21 +115,44 @@ export default function Payment() {
       });
 
       if (!intentResponse.ok) {
-        const errorData = await intentResponse.json();
-        throw new Error(errorData.error || 'Failed to create payment intent');
+        const contentType = intentResponse.headers.get('content-type') || '';
+        if (contentType.includes('application/json')) {
+          const errorData = await intentResponse.json();
+          throw new Error(errorData.error || 'Failed to create payment intent');
+        }
+        const text = await intentResponse.text();
+        throw new Error(
+          `Payment API error (${intentResponse.status}). ` +
+            (text.startsWith('<!DOCTYPE')
+              ? 'Server returned HTML (API route missing or misrouted).'
+              : text.slice(0, 200))
+        );
+      }
+
+      const okContentType = intentResponse.headers.get('content-type') || '';
+      if (!okContentType.includes('application/json')) {
+        const text = await intentResponse.text();
+        throw new Error(
+          text.startsWith('<!DOCTYPE')
+            ? 'Payment API returned HTML instead of JSON. Check backend deployment/routing.'
+            : 'Payment API returned an unexpected response.'
+        );
       }
 
       const intentData = await intentResponse.json();
       const pId = intentData.paymentId;
-
-      setPaymentId(pId);
       
       // Start real-time status polling
       startStatusPolling(pId);
 
       // Load Stripe
       const { loadStripe } = await import('@stripe/stripe-js');
-      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
+      const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '';
+      if (!publishableKey) {
+        throw new Error('Stripe publishable key missing (VITE_STRIPE_PUBLISHABLE_KEY)');
+      }
+
+      const stripe = await loadStripe(publishableKey);
 
       if (!stripe) {
         throw new Error('Failed to load Stripe');

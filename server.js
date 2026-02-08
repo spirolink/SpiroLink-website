@@ -9,6 +9,8 @@ import { dirname, join } from 'path';
 import fs from 'fs';
 import * as usersDb from './chatbot-backend/db/users.js';
 import { initializeDatabase } from './chatbot-backend/config/initDb.js';
+import paymentRoutes from './chatbot-backend/routes/payment.js';
+import { initializeEmailService } from './chatbot-backend/lib/emailService.js';
 
 dotenv.config();
 
@@ -30,7 +32,13 @@ const frontendDistPath = join(__dirname, 'frontend', 'dist');
    MIDDLEWARE
 ================================ */
 app.use(cors());
-app.use(express.json());
+const jsonParser = express.json();
+app.use((req, res, next) => {
+  if (req.originalUrl.startsWith('/api/payment/stripe/webhook')) {
+    return next();
+  }
+  return jsonParser(req, res, next);
+});
 
 // Serve static files from frontend/dist
 app.use(express.static(frontendDistPath));
@@ -84,6 +92,12 @@ if (!emailService) {
 /* ===============================
    API ROUTES
 ================================ */
+
+// Initialize chatbot-backend email service (used by payment webhooks)
+initializeEmailService();
+
+// Payment routes (Stripe, status polling, webhook)
+app.use('/api/payment', paymentRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
