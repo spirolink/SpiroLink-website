@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Payment() {
   const [amount, setAmount] = useState<number | ''>('');
@@ -9,6 +9,9 @@ export default function Payment() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [transactionId, setTransactionId] = useState('');
+  const [paymentStatus, setPaymentStatus] = useState<'idle' | 'pending' | 'processing' | 'succeeded' | 'failed'>('idle');
+  const [paymentId, setPaymentId] = useState('');
+  const statusCheckIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const services = [
     'PON & FTTH',
@@ -18,6 +21,48 @@ export default function Payment() {
     'Consulting & Design',
     'Other'
   ];
+
+  // Clean up status check interval on component unmount
+  useEffect(() => {
+    return () => {
+      if (statusCheckIntervalRef.current) {
+        clearInterval(statusCheckIntervalRef.current);
+      }
+    };
+  }, []);
+
+  // Poll payment status in real-time
+  const startStatusPolling = (pId: string) => {
+    if (statusCheckIntervalRef.current) {
+      clearInterval(statusCheckIntervalRef.current);
+    }
+
+    statusCheckIntervalRef.current = setInterval(async () => {
+      try {
+        const response = await fetch(`/api/payment/status/${pId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setPaymentStatus(data.status || 'pending');
+          
+          if (data.status === 'succeeded') {
+            setSuccess(true);
+            setTransactionId(data.transaction_id || pId);
+            if (statusCheckIntervalRef.current) {
+              clearInterval(statusCheckIntervalRef.current);
+            }
+          } else if (data.status === 'failed') {
+            setError('Payment failed. Please try again.');
+            setPaymentStatus('failed');
+            if (statusCheckIntervalRef.current) {
+              clearInterval(statusCheckIntervalRef.current);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error checking payment status:', err);
+      }
+    }, 2000); // Check every 2 seconds
+  };
 
   const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +93,8 @@ export default function Payment() {
         return;
       }
 
+      setPaymentStatus('pending');
+
       const intentResponse = await fetch('/api/payment/stripe/create-intent', {
         method: 'POST',
         headers: {
@@ -55,12 +102,9 @@ export default function Payment() {
         },
         body: JSON.stringify({
           amount: Number(amount),
-          currency: 'usd',
-          customer: {
-            name,
-            email,
-          },
-          description: serviceType || 'Payment for SPIROLINK services',
+          name,
+          email,
+          serviceType,
         }),
       });
 
@@ -70,6 +114,12 @@ export default function Payment() {
       }
 
       const intentData = await intentResponse.json();
+      const pId = intentData.paymentId;
+
+      setPaymentId(pId);
+      
+      // Start real-time status polling
+      startStatusPolling(pId);
 
       // Load Stripe
       const { loadStripe } = await import('@stripe/stripe-js');
@@ -79,25 +129,26 @@ export default function Payment() {
         throw new Error('Failed to load Stripe');
       }
 
+      setPaymentStatus('processing');
+
       // Redirect to Stripe checkout
       const { error: redirectError } = await stripe.redirectToCheckout({
         sessionId: intentData.sessionId,
       });
 
       if (redirectError) {
+        setPaymentStatus('failed');
         throw new Error(redirectError.message || 'Failed to redirect to checkout');
       }
 
-      setSuccess(true);
-      setTransactionId(intentData.sessionId || 'processing');
-      setName('');
-      setEmail('');
-      setAmount('');
-      setServiceType('');
     } catch (err) {
       console.error('❌ Stripe error:', err);
       setError(err instanceof Error ? err.message : 'Failed to initiate payment');
+      setPaymentStatus('failed');
       setLoading(false);
+      if (statusCheckIntervalRef.current) {
+        clearInterval(statusCheckIntervalRef.current);
+      }
     }
   };
 
@@ -120,6 +171,26 @@ export default function Payment() {
             {error}
           </div>
         ) : null}
+
+        {paymentStatus === 'processing' && (
+          <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700 mb-6 flex items-center gap-2">
+            <div className="animate-spin">⏳</div>
+            <div>Processing your payment...</div>
+          </div>
+        )}
+
+        {paymentStatus === 'pending' && (
+          <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-700 mb-6 flex items-center gap-2">
+            <div>⏱️</div>
+            <div>Payment pending - redirecting to Stripe...</div>
+          </div>
+        )}
+
+        {paymentStatus === 'failed' && (
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 mb-6">
+            Payment failed. Please try again.
+          </div>
+        )}
 
         <form onSubmit={handlePayment}>
           <label htmlFor="name" className="text-sm font-medium block mt-4 mb-2">

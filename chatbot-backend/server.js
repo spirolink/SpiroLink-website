@@ -9,6 +9,8 @@ import Stripe from "stripe";
 import crypto from "crypto";
 import { initializeDatabase } from "./config/initDb.js";
 import * as usersDb from "./db/users.js";
+import paymentRoutes from "./routes/payment.js";
+import { initializeEmailService } from "./lib/emailService.js";
 
 dotenv.config();
 
@@ -106,6 +108,16 @@ if (process.env.STRIPE_SECRET_KEY) {
   console.warn("⚠️  Stripe credentials not configured");
   console.warn("   STRIPE_SECRET_KEY: " + (process.env.STRIPE_SECRET_KEY ? "✅" : "MISSING"));
 }
+
+/* ===============================
+   INITIALIZE SERVICES
+================================ */
+initializeEmailService();
+
+/* ===============================
+   PAYMENT ROUTES (Real-time Stripe)
+================================ */
+app.use('/api/payment', paymentRoutes);
 
 /* ===============================
    HEALTH CHECK

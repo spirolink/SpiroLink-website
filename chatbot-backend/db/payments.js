@@ -1,30 +1,44 @@
 import pool from '../config/db.js';
 
 /**
- * Payment Database Operations
+ * Payment Database Operations - Real-time Stripe Integration
  */
 
 export const createPayment = async (paymentData) => {
   const {
-    user_email,
-    user_name,
+    payment_id,
+    user_id,
+    email,
+    name,
+    service_type,
     amount,
-    currency,
-    gateway,
-    transaction_id,
-    invoice_number,
-    payment_method,
-    description,
-    metadata = {}
+    currency = 'usd',
+    stripe_session_id = null,
+    stripe_payment_intent = null,
+    metadata = null,
   } = paymentData;
 
   try {
     const result = await pool.query(
-      `INSERT INTO payments 
-       (user_email, user_name, amount, currency, gateway, transaction_id, invoice_number, payment_method, description, metadata, status)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-       RETURNING id, created_at`,
-      [user_email, user_name, amount, currency, gateway, transaction_id, invoice_number, payment_method, description, JSON.stringify(metadata), 'completed']
+      `INSERT INTO payments (
+        payment_id, user_id, email, name, service_type, 
+        amount, currency, stripe_session_id, stripe_payment_intent, 
+        status, metadata
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+      RETURNING *`,
+      [
+        payment_id,
+        user_id,
+        email,
+        name,
+        service_type,
+        amount,
+        currency,
+        stripe_session_id,
+        stripe_payment_intent,
+        'pending',
+        metadata ? JSON.stringify(metadata) : null,
+      ]
     );
     return result.rows[0];
   } catch (error) {
@@ -33,11 +47,11 @@ export const createPayment = async (paymentData) => {
   }
 };
 
-export const getPaymentByTransactionId = async (transactionId) => {
+export const getPayment = async (payment_id) => {
   try {
     const result = await pool.query(
-      'SELECT * FROM payments WHERE transaction_id = $1',
-      [transactionId]
+      'SELECT * FROM payments WHERE payment_id = $1',
+      [payment_id]
     );
     return result.rows[0] || null;
   } catch (error) {
@@ -46,27 +60,40 @@ export const getPaymentByTransactionId = async (transactionId) => {
   }
 };
 
-export const getPaymentsByEmail = async (email) => {
+export const getPaymentByStripeSession = async (stripe_session_id) => {
   try {
     const result = await pool.query(
-      'SELECT * FROM payments WHERE user_email = $1 ORDER BY created_at DESC',
-      [email]
+      'SELECT * FROM payments WHERE stripe_session_id = $1',
+      [stripe_session_id]
     );
-    return result.rows;
+    return result.rows[0] || null;
   } catch (error) {
-    console.error('❌ Error fetching payments:', error);
+    console.error('❌ Error fetching payment by session:', error);
     throw error;
   }
 };
 
-export const updatePaymentStatus = async (paymentId, status) => {
+export const getPaymentByStripeIntent = async (stripe_payment_intent) => {
+  try {
+    const result = await pool.query(
+      'SELECT * FROM payments WHERE stripe_payment_intent = $1',
+      [stripe_payment_intent]
+    );
+    return result.rows[0] || null;
+  } catch (error) {
+    console.error('❌ Error fetching payment by intent:', error);
+    throw error;
+  }
+};
+
+export const updatePaymentStatus = async (payment_id, status, transaction_id = null) => {
   try {
     const result = await pool.query(
       `UPDATE payments 
-       SET status = $1, updated_at = NOW(), paid_at = CASE WHEN $1 = 'completed' THEN NOW() ELSE paid_at END
-       WHERE id = $2
+       SET status = $1, updated_at = CURRENT_TIMESTAMP, transaction_id = $2
+       WHERE payment_id = $3
        RETURNING *`,
-      [status, paymentId]
+      [status, transaction_id, payment_id]
     );
     return result.rows[0];
   } catch (error) {
@@ -74,42 +101,15 @@ export const updatePaymentStatus = async (paymentId, status) => {
     throw error;
   }
 };
-
-export const createInvoice = async (invoiceData) => {
-  const {
-    payment_id,
-    invoice_number,
-    user_email,
-    user_name,
-    amount,
-    currency
-  } = invoiceData;
-
+export const getUserPayments = async (user_id) => {
   try {
     const result = await pool.query(
-      `INSERT INTO invoices 
-       (payment_id, invoice_number, user_email, user_name, amount, currency, status)
-       VALUES ($1, $2, $3, $4, $5, $6, 'draft')
-       RETURNING *`,
-      [payment_id, invoice_number, user_email, user_name, amount, currency]
+      'SELECT * FROM payments WHERE user_id = $1 ORDER BY created_at DESC',
+      [user_id]
     );
-    return result.rows[0];
+    return result.rows;
   } catch (error) {
-    console.error('❌ Error creating invoice:', error);
-    throw error;
-  }
-};
-
-export const addPaymentLog = async (paymentId, eventType, status, message, responseData = null) => {
-  try {
-    await pool.query(
-      `INSERT INTO payment_logs 
-       (payment_id, event_type, status, message, response_data)
-       VALUES ($1, $2, $3, $4, $5)`,
-      [paymentId, eventType, status, message, JSON.stringify(responseData)]
-    );
-  } catch (error) {
-    console.error('❌ Error adding payment log:', error);
+    console.error('❌ Error fetching user payments:', error);
     throw error;
   }
 };
@@ -119,11 +119,10 @@ export const getPaymentStats = async () => {
     const result = await pool.query(`
       SELECT 
         COUNT(*) as total_payments,
-        COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed,
-        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
-        COUNT(CASE WHEN status = 'failed' THEN 1 END) as failed,
-        SUM(CASE WHEN status = 'completed' THEN amount ELSE 0 END) as total_amount,
-        COUNT(DISTINCT user_email) as unique_customers
+        COUNT(CASE WHEN status = 'succeeded' THEN 1 END) as successful_payments,
+        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_payments,
+        COUNT(CASE WHEN status = 'failed' THEN 1 END) as failed_payments,
+        SUM(CASE WHEN status = 'succeeded' THEN amount ELSE 0 END) as total_revenue
       FROM payments
     `);
     return result.rows[0];
@@ -135,10 +134,10 @@ export const getPaymentStats = async () => {
 
 export default {
   createPayment,
-  getPaymentByTransactionId,
-  getPaymentsByEmail,
+  getPayment,
+  getPaymentByStripeSession,
+  getPaymentByStripeIntent,
   updatePaymentStatus,
-  createInvoice,
-  addPaymentLog,
+  getUserPayments,
   getPaymentStats
 };
