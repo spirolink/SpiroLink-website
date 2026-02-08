@@ -128,6 +128,35 @@ router.get('/status/:paymentId', async (req, res) => {
 });
 
 /**
+ * Get Payment by Stripe Session
+ * GET /api/payment/stripe/session/:sessionId
+ */
+router.get('/stripe/session/:sessionId', async (req, res) => {
+  try {
+    const { sessionId } = req.params;
+
+    const payment = await paymentsDb.getPaymentByStripeSession(sessionId);
+    if (!payment) {
+      return res.status(404).json({ error: 'Payment not found for session' });
+    }
+
+    const service_type = payment?.metadata?.service_type || payment?.metadata?.serviceType || payment.description || null;
+
+    res.json({
+      payment_id: payment.id,
+      status: payment.status,
+      amount: payment.amount,
+      email: payment.user_email,
+      service_type,
+      transaction_id: payment.transaction_id,
+    });
+  } catch (error) {
+    console.error('❌ Error fetching payment by session:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * Webhook Handler for Stripe Events
  * POST /api/payment/stripe/webhook
  * Listens for: charge.succeeded, charge.failed, checkout.session.completed, payment_intent.succeeded
