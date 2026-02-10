@@ -16,6 +16,10 @@ services:
         sync: false
       - key: RESEND_API_KEY
         sync: false
+      - key: ADMIN_EMAIL
+        value: contact@spirolink.com
+      - key: COMPANY_EMAIL
+        value: contact@spirolink.com
 
   - type: web
     name: spirolink-frontend

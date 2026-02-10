@@ -3,6 +3,9 @@ import { Resend } from 'resend';
 
 let emailService = null;
 
+// Verified sender for Resend (must match your verified domain)
+const RESEND_FROM = 'SPIROLINK <no-reply@spirolink.com>';
+
 /**
  * Initialize email service (Resend or SMTP)
  */
@@ -139,7 +142,8 @@ Keep this email for your records.
   try {
     if (emailService.type === 'resend') {
       await emailService.client.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+        // Always send from the verified domain sender
+        from: RESEND_FROM,
         to: email,
         subject: 'Payment Confirmation - SPIROLINK',
         html: htmlContent,
@@ -147,7 +151,8 @@ Keep this email for your records.
       });
     } else if (emailService.type === 'smtp') {
       await emailService.client.sendMail({
-        from: process.env.SMTP_FROM_EMAIL || 'noreply@spirolink.com',
+        // SMTP sender must be allowed by your SMTP provider
+        from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER,
         to: email,
         subject: 'Payment Confirmation - SPIROLINK',
         html: htmlContent,
@@ -212,7 +217,7 @@ export const sendPaymentFailedEmail = async (paymentData) => {
   try {
     if (emailService.type === 'resend') {
       await emailService.client.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'noreply@spirolink.com',
+        from: RESEND_FROM,
         to: email,
         subject: 'Payment Failed - SPIROLINK',
         html: htmlContent,

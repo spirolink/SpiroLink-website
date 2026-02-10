@@ -18,22 +18,20 @@ git push origin theepan
 
 ### 3. **Configure Environment Variables in Render Dashboard**
 
-Add these variables in Render dashboard under "Environment":
+Add these variables in Render dashboard under "Environment" (backend service only):
 
 ```
 NODE_ENV=production
-PORT=10000
 
-OPENAI_API_KEY=YOUR_OPENAI_API_KEY_HERE
+# Resend (server-side only)
+RESEND_API_KEY=re_xxx...          # mark as Secret in Render
 
-SMTP_SERVICE=gmail
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=YOUR_GMAIL_HERE
-SMTP_PASSWORD=YOUR_APP_PASSWORD_HERE
-SMTP_FROM=YOUR_GMAIL_HERE
-COMPANY_EMAIL=support@spirolink.com
+# Admin/company recipient for notifications
+ADMIN_EMAIL=contact@spirolink.com
+COMPANY_EMAIL=contact@spirolink.com
+
+# Optional (if you use chatbot)
+OPENAI_API_KEY=sk-proj_xxx...     # mark as Secret in Render
 ```
 
 ### 4. **Build Settings**
