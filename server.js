@@ -376,7 +376,8 @@ app.post('/api/contact', async (req, res) => {
     }
 
     // Verified sender for Resend (must match your verified domain)
-    const FROM_EMAIL = 'SPIROLINK <no-reply@spirolink.com>';
+    // Verified sender (Resend domain spirolink.com must be verified)
+    const FROM_EMAIL = 'SpiroLink <contact@spirolink.com>';
     // Admin/company recipient (configure in env for production)
     const ADMIN_EMAIL = process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || 'contact@spirolink.com';
 
@@ -426,6 +427,8 @@ app.post('/api/contact', async (req, res) => {
         resend.emails.send({
           from: FROM_EMAIL,
           to: ADMIN_EMAIL,
+          // So you can reply directly to the user from the admin email
+          replyTo: safeEmail,
           subject: emailSubject,
           html: companyEmailHtml,
         }),
@@ -446,6 +449,7 @@ app.post('/api/contact', async (req, res) => {
         smtpTransporter.sendMail({
           from: `"SPIROLINK" <${smtpFrom}>`,
           to: ADMIN_EMAIL,
+          replyTo: safeEmail,
           subject: emailSubject,
           html: companyEmailHtml,
         }),

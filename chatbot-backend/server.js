@@ -386,162 +386,9 @@ app.post("/api/chat", async (req, res) => {
 /* ===============================
    CONTACT FORM (EMAIL)
 ================================ */
-app.post("/api/contact", async (req, res) => {
-  try {
-    // Correlate logs for this request (helps debugging in production)
-    const requestId = req.headers["x-request-id"] || crypto.randomUUID();
-
-    if (!emailService) {
-      return res.status(503).json({
-        success: false,
-        error: "Email service not configured",
-      });
-    }
-
-    const { name, email, phone, serviceType, message } = req.body;
-
-    // Validate request payload (never trust frontend-only validation)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!name || !email || !message) {
-      return res.status(400).json({
-        success: false,
-        error: "Name, email, and message are required",
-      });
-    }
-
-    if (!emailRegex.test(String(email))) {
-      return res.status(400).json({
-        success: false,
-        error: "A valid email is required",
-      });
-    }
-
-    // Verified sender for Resend (must match your verified domain)
-    const FROM_EMAIL = "SPIROLINK <no-reply@spirolink.com>";
-    // Admin/company recipient (configure in env for production)
-    const ADMIN_EMAIL =
-      process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || "contact@spirolink.com";
-
-    // Escape user-provided values to avoid HTML injection in emails
-    const escapeHtml = (value) =>
-      String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-
-    const safeName = escapeHtml(name);
-    const safeEmail = String(email).trim().toLowerCase();
-    const safePhone = phone ? escapeHtml(phone) : "N/A";
-    const safeServiceType = escapeHtml(serviceType || "General");
-    const safeMessageHtml = escapeHtml(message).replace(/\n/g, "<br>");
-
-    console.log(`📧 [${requestId}] Processing contact form`);
-
-    const emailSubject = `New Contact Form - ${safeServiceType}`;
-
-    if (emailService === "resend") {
-      // Resend client (server-side only; API key stays in environment variables)
-      const resend = new Resend(process.env.RESEND_API_KEY);
-
-      // Send BOTH emails and only return success after BOTH succeed
-      await Promise.all([
-        // Admin notification
-        resend.emails.send({
-          from: FROM_EMAIL,
-          to: ADMIN_EMAIL,
-          subject: emailSubject,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${safeName}</p>
-            <p><strong>Email:</strong> ${escapeHtml(safeEmail)}</p>
-            <p><strong>Phone:</strong> ${safePhone}</p>
-            <p><strong>Service:</strong> ${safeServiceType}</p>
-            <p><strong>Message:</strong></p>
-            <p>${safeMessageHtml}</p>
-            <hr>
-            <p><em>Reply to: ${escapeHtml(safeEmail)}</em></p>
-          `,
-        }),
-        // User confirmation
-        resend.emails.send({
-          from: FROM_EMAIL,
-          to: safeEmail,
-          subject: "We received your message - SPIROLINK",
-          html: `
-            <h3>Hello ${safeName},</h3>
-            <p>Thank you for contacting SPIROLINK.</p>
-            <p>We have received your message and will get back to you shortly.</p>
-            <br>
-            <p>Regards,<br>SPIROLINK Team</p>
-          `,
-        }),
-      ]);
-
-      console.log(`✅ [${requestId}] Admin + user emails sent via Resend`);
-
-      return res.json({
-        success: true,
-        message: "Emails sent successfully",
-      });
-    } else if (emailService === "smtp") {
-      // SMTP email
-      const companyEmailHtml = `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${escapeHtml(safeEmail)}</p>
-        <p><strong>Phone:</strong> ${safePhone}</p>
-        <p><strong>Service:</strong> ${safeServiceType}</p>
-        <p><strong>Message:</strong></p>
-        <p>${safeMessageHtml}</p>
-        <hr>
-        <p><em>Reply to: ${escapeHtml(safeEmail)}</em></p>
-      `;
-
-      const userEmailHtml = `
-        <h3>Hello ${safeName},</h3>
-        <p>Thank you for contacting SPIROLINK.</p>
-        <p>We have received your message and will get back to you shortly.</p>
-        <br>
-        <p>Regards,<br>SPIROLINK Team</p>
-      `;
-
-      // SMTP fallback (kept for local/dev)
-      const smtpFrom = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
-
-      // Send BOTH emails and only return success after BOTH succeed
-      await Promise.all([
-        mailTransporter.sendMail({
-          from: `"SPIROLINK" <${smtpFrom}>`,
-          to: ADMIN_EMAIL,
-          subject: emailSubject,
-          html: companyEmailHtml,
-        }),
-        mailTransporter.sendMail({
-          from: `"SPIROLINK" <${smtpFrom}>`,
-          to: safeEmail,
-          subject: "We received your message - SPIROLINK",
-          html: userEmailHtml,
-        }),
-      ]);
-
-      console.log(`✅ [${requestId}] Admin + user emails sent via SMTP`);
-
-      return res.json({
-        success: true,
-        message: "Emails sent successfully",
-      });
-    }
-  } catch (error) {
-    console.error("❌ Email error:", error);
-    res.status(500).json({
-      success: false,
-      error: "Failed to send email: " + error.message,
-    });
-  }
-});
+// NOTE: In production we deploy the unified service (root server.js) which serves the frontend
+// and handles /api/contact. Keeping a second /api/contact implementation here increases the
+// chance of deploying the wrong service and breaking relative `/api/*` calls.
 
 /* ===============================
    PAYMENT ENDPOINTS
@@ -579,7 +426,8 @@ app.post("/api/payment/create-order", async (req, res) => {
       receipt,
       notes: {
         customer_name: customer?.name || "Guest",
-        customer_email: customer?.email || "noreply@spirolink.com",
+        // IMPORTANT: only use the user-provided email; don't default to a company/Gmail address
+        customer_email: customer?.email ? String(customer.email).trim().toLowerCase() : "",
         customer_contact: customer?.contact || "",
         description: description || "SPIROLINK Service Payment",
       },
@@ -669,12 +517,25 @@ app.post("/api/payment/verify-payment", async (req, res) => {
 
       if (emailService === "resend") {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from: "SPIROLINK <no-reply@spirolink.com>",
-          to: customerEmail,
-          subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
-          html: emailHtml,
-        });
+        const adminEmail =
+          process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || "contact@spirolink.com";
+
+        // Send BOTH emails: user receipt + admin notification
+        await Promise.all([
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: customerEmail,
+            subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: adminEmail,
+            replyTo: customerEmail,
+            subject: `Payment Confirmed (Admin Copy) - ₹${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+        ]);
         console.log(`✅ Payment confirmation email sent via Resend`);
       } else if (emailService === "smtp") {
         await mailTransporter.sendMail({
@@ -868,12 +729,25 @@ app.post("/api/payment/stripe/verify-payment", async (req, res) => {
 
       if (emailService === "resend") {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from: "SPIROLINK <no-reply@spirolink.com>",
-          to: customerEmail,
-          subject: `Payment Confirmed - $${amount} - SPIROLINK`,
-          html: emailHtml,
-        });
+        const adminEmail =
+          process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || "contact@spirolink.com";
+
+        // Send BOTH emails: user receipt + admin notification
+        await Promise.all([
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: customerEmail,
+            subject: `Payment Confirmed - $${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: adminEmail,
+            replyTo: customerEmail,
+            subject: `Payment Confirmed (Admin Copy) - $${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+        ]);
         console.log(`✅ Payment confirmation email sent via Resend`);
       } else if (emailService === "smtp") {
         await mailTransporter.sendMail({
