@@ -21,11 +21,13 @@ const PORT = process.env.PORT || 5000;
    MIDDLEWARE
 ================================ */
 app.use(cors({ origin: true }));
+const jsonParser = express.json();
 app.use((req, res, next) => {
-  if (req.originalUrl === '/api/payment/stripe/webhook') {
+  const isStripeWebhook = req.originalUrl.startsWith('/api/payment/stripe/webhook');
+  if (isStripeWebhook) {
     next(); // Skip JSON parsing for Stripe webhook
   } else {
-    express.json()(req, res, next);
+    jsonParser(req, res, next);
   }
 });
 
