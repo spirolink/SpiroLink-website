@@ -8,6 +8,11 @@ const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
+const getSafeDbUrlForLogs = () => {
+  const raw = process.env.DATABASE_URL || '';
+  return raw.replace(/:\/\/([^:]+):([^@]+)@/, '://$1:****@');
+};
+
 /**
  * Create Stripe Payment Intent
  * POST /api/payment/stripe/create-intent
@@ -238,6 +243,7 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
 
         // Fallback insert: create payment if checkout was completed without a pre-created DB row
         if (!payment) {
+          console.log('🗄️  Inserting payment into DB:', getSafeDbUrlForLogs());
           const email =
             session.customer_details?.email ||
             session.customer_email ||
@@ -340,6 +346,7 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
 
         // Fallback insert when webhook arrives without an existing payment row
         if (!payment) {
+          console.log('🗄️  Inserting payment into DB:', getSafeDbUrlForLogs());
           payment = await paymentsDb.createPayment({
             email: intent.receipt_email || intent.metadata?.customer_email || 'unknown@stripe.customer',
             name: intent.metadata?.customer_name || null,
